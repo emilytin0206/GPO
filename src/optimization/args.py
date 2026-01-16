@@ -34,14 +34,19 @@ _DATASET = flags.DEFINE_string(
 _TASK = flags.DEFINE_list(
     "task_name", "all", "The name of the task to search for instructions on."
 )
+_SHUFFLE_TRAIN_DATA = flags.DEFINE_bool(
+    "shuffle_train_data", True, 
+    "Whether to shuffle the combined training data from different subsets."
+)
+
 
 # optimizer config
 _OPTIMIZER = flags.DEFINE_string(
-    "optimizer_llm_name", "gpt-3.5-turbo", "The name of the optimizer LLM."
+    "optimizer_llm_name", "llama3", "The name of the optimizer LLM."
 )
 
 _OPTIMIZER_TEMPERATURE = flags.DEFINE_float(
-    "optimizer_temperature", 1.0, "temperature of optimizer"
+    "optimizer_temperature", 0.7, "temperature of optimizer"
 )
 
 _INITIAL_INSTRUCTION = flags.DEFINE_string(
@@ -158,7 +163,11 @@ _FORMAT_DATA_NUM = flags.DEFINE_integer(
 # evaluation config
 
 _SCORER = flags.DEFINE_string(
-    "scorer_llm_name", "llama2-chat-7b", "The name of the scorer LLM."
+    "scorer_llm_name", "llama3", "The name of the scorer LLM."
+)
+
+_SCORER_TEMPERATURE = flags.DEFINE_float(
+    "scorer_temperature", 0.0, "The temperature for the scorer model."
 )
 
 _INCLUDE_QA = flags.DEFINE_bool(
@@ -177,6 +186,15 @@ _FEW_SHOT_NUM = flags.DEFINE_integer(
     "few_shot_number", 5, "The number of sample in few shot"
 )
 
+_MMLU_SUBSETS = flags.DEFINE_list(
+    "mmlu_subsets", ["all"], 
+    "The list of MMLU subsets to use. Use ['all'] for all."
+)
+
+_MMLU_TRAIN_NUM = flags.DEFINE_integer(
+    "mmlu_train_num", -1,
+    "Number of training examples per subset. -1 for all."
+)
 
 def get_args():
     # basic config
@@ -187,7 +205,10 @@ def get_args():
     # dataset config
     dataset_name = _DATASET.value.lower()
     task_name = _TASK.value
-    
+    mmlu_subsets = _MMLU_SUBSETS.value
+    mmlu_train_num = _MMLU_TRAIN_NUM.value
+    shuffle_train_data = _SHUFFLE_TRAIN_DATA.value
+
     # optimization config
     optimizer_llm_name = _OPTIMIZER.value
     optimizer_temperature = _OPTIMIZER_TEMPERATURE.value
@@ -220,6 +241,7 @@ def get_args():
     
     # evaluation config
     scorer_llm_name = _SCORER.value
+    scorer_temperature = _SCORER_TEMPERATURE.value
     include_qa = _INCLUDE_QA.value
     evaluate_generated_ins_on_few_shot = _EVALUATE_FEW_SHOT.value  # 0-shot or few-shot
     few_shot_num = _FEW_SHOT_NUM.value
@@ -302,6 +324,9 @@ def get_args():
         # dataset config
         "dataset_name": dataset_name,
         "task_name": task_name,
+        "mmlu_subsets": mmlu_subsets,
+        "mmlu_train_num": mmlu_train_num,
+        "shuffle_train_data": shuffle_train_data,
         
         # optimization config
         "optimizer_llm_name": optimizer_llm_name,
@@ -336,6 +361,7 @@ def get_args():
         
         # evaluation config
         "scorer_llm_name": scorer_llm_name,
+        "scorer_temperature": scorer_temperature,
         "include_qa": include_qa,
         "evaluate_generated_ins_on_few_shot": evaluate_generated_ins_on_few_shot,
         "few_shot_num": few_shot_num,

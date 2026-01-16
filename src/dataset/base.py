@@ -28,8 +28,16 @@ class Base_Dataset():
     def get_ratio(self):
         return self.dataset_class.get_ratio()
     
-    def read_data(self, *args, **kwargs):
-        return self.dataset_class.read_data(*args, **kwargs)
+    def read_data(self, task_name, mmlu_subsets=['all'], mmlu_train_num=-1, shuffle_train_data=True):
+        if isinstance(self.dataset_class, MMLU_Dataset):
+            return self.dataset_class.read_data(
+                task_name, 
+                mmlu_subsets=mmlu_subsets, 
+                mmlu_train_num=mmlu_train_num,
+                shuffle_train_data=shuffle_train_data
+            )
+        else:
+            return self.dataset_class.read_data(task_name)
     
     def get_single_question(self, data, idx):
         return self.dataset_class.get_single_question(data, idx)

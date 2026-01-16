@@ -1,6 +1,6 @@
 import os
 import json
-
+import random
 
 GPO_ROOT_PATH = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
@@ -89,28 +89,41 @@ class MMLU_Dataset:
         )
         return train_ratio, eval_ratio, test_ratio
     
-    def read_data(self, task):
+    def read_data(self, task, mmlu_subsets=['all'], mmlu_train_num=-1, shuffle_train_data=True):
 
         datas = []
+        root_data_folder_path = os.path.join(GPO_ROOT_PATH, f"data/MMLU/")
         
-        root_data_folder_path = os.path.join(
-            GPO_ROOT_PATH, f"data/MMLU/"
-        )
-        
-        if task[0] == "all":
-            tasks = mmlu_tasks
-        elif isinstance(task, str):
-            assert task in mmlu_tasks
-            tasks = [task]
-        elif isinstance(task, list):
-            for t in task:
-                assert t in mmlu_tasks
-            tasks = task
+        # 1. 篩選要跑的子集 (Subsets)
+        if isinstance(task, list):
+            requested_tasks = task
+        elif task == "all":
+            requested_tasks = mmlu_tasks
+        else:
+            requested_tasks = [task]
+
+        if 'all' in mmlu_subsets:
+            config_subsets = mmlu_tasks
+        else:
+            config_subsets = mmlu_subsets
             
-        for task in tasks:
-            task_data_folder_path = os.path.join(
-                GPO_ROOT_PATH, f"data/MMLU/{task}"
-            )
+        tasks_to_run = sorted(list(set(requested_tasks) & set(config_subsets)))
+
+        if not tasks_to_run:
+            print("Warning: No tasks to run after filtering.")
+            return []
+
+        # === 準備合併後的容器 ===
+        merged_train_data = []
+        merged_eval_data = []
+        merged_test_data = []
+        merged_few_shot_data = []
+        merged_format_data = []
+
+        print(f"Loading MMLU subsets: {tasks_to_run}")
+
+        for t in tasks_to_run:
+            task_data_folder_path = os.path.join(GPO_ROOT_PATH, f"data/MMLU/{t}")
             
             f_train = os.path.join(task_data_folder_path, f"train.jsonl")
             f_eval = os.path.join(task_data_folder_path, f"eval.jsonl")
@@ -118,34 +131,51 @@ class MMLU_Dataset:
             f_few_shot_examples = os.path.join(task_data_folder_path, f"few_shot_examples.jsonl")
             f_format = os.path.join(task_data_folder_path, f"format.jsonl")
             
+            # 讀取資料
             train_data = read_jsonl(f_train)
             eval_data = read_jsonl(f_eval)
             test_data = read_jsonl(f_test)
             few_shot_examples = read_jsonl(f_few_shot_examples)
             format_data = read_jsonl(f_format)
 
-            train_num_examples = len(train_data)
-            eval_num_examples = len(eval_data)
-            test_num_examples = len(test_data)
-            few_shot_num_examples = len(few_shot_examples)
-            format_num_examples = len(format_data)
+            # === 2. 實作：每個子集各取 n 個 (train_num) ===
+            if mmlu_train_num > 0:
+                # 如果資料不夠 n 筆，slice 會自動取到最大長度 (即全部)，不會報錯
+                train_data = train_data[:mmlu_train_num]
 
-            datas.append({
-                # task
-                "task": task,
-                # data
-                "train_data": train_data,
-                "eval_data": eval_data,
-                "test_data": test_data,
-                "few_shot_data": few_shot_examples,
-                "format_data": format_data,
-                # the number of data
-                "train_num_examples": train_num_examples,
-                "eval_num_examples": eval_num_examples,
-                "test_num_examples": test_num_examples,
-                "few_shot_num_examples": few_shot_num_examples,
-                "format_num_examples": format_num_examples,
-            })
+            # 將處理後的資料加入合併清單
+            merged_train_data.extend(train_data)
+            merged_eval_data.extend(eval_data)
+            merged_test_data.extend(test_data)
+            merged_few_shot_data.extend(few_shot_examples)
+            merged_format_data.extend(format_data)
+
+        # === 3. 實作：打散 (Shuffle) ===
+        if shuffle_train_data:
+            print(f"Shuffling merged training data (Total: {len(merged_train_data)})...")
+            random.seed(42) # 設定 seed 確保實驗可重現
+            random.shuffle(merged_train_data)
+            
+            # 也可以選擇性地打散 eval/test，通常保持順序或打散皆可，這裡主要針對 train
+            # random.shuffle(merged_eval_data) 
+
+        # 回傳單一合併後的 Task 物件
+        # Task 名稱設為 "mmlu_merged" 或是子集名稱的組合，這裡用 generic 名稱避免檔名過長
+        task_name_str = "mmlu_merged" 
+        
+        datas.append({
+            "task": task_name_str,
+            "train_data": merged_train_data,
+            "eval_data": merged_eval_data,
+            "test_data": merged_test_data,
+            "few_shot_data": merged_few_shot_data,
+            "format_data": merged_format_data,
+            "train_num_examples": len(merged_train_data),
+            "eval_num_examples": len(merged_eval_data),
+            "test_num_examples": len(merged_test_data),
+            "few_shot_num_examples": len(merged_few_shot_data),
+            "format_num_examples": len(merged_format_data),
+        })
 
         return datas
     

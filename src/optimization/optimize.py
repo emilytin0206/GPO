@@ -94,85 +94,67 @@ def prompt_optimization(
     num_search_epochs,
     num_generated_instructions_in_each_step,
     scorer_llm_name,
+    scorer_temperature=0.0,
     include_qa,
     evaluate_generated_ins_on_few_shot,
     few_shot_num,
     result_by_instruction_folder,
     save_folder,
     only_evaluate,
+    mmlu_subsets,
+    mmlu_train_num,
+    shuffle_train_data=True,
+    **kwargs
 ):
     # ====================== environment setting ======================
     np.random.seed(0)
     random.seed(0)
-    os.environ["CUDA_VISIBLE_DEVICES"] = ",".join(gpus)
+    # os.environ["CUDA_VISIBLE_DEVICES"] = ",".join(gpus)
 
     # ====================== optimizer model config ======================
-    assert optimizer_llm_name in {"gpt-3.5-turbo", "gpt-4"}
-    openai.api_key = openai_main_api_key
+    print(f"Using Ollama for Optimizer: {optimizer_llm_name}")
+    
     optimizer_gpt_max_decode_steps = 512
     optimizer_gpt_temperature = optimizer_temperature
 
     optimizer_llm_dict = dict()
     optimizer_llm_dict["max_decode_steps"] = optimizer_gpt_max_decode_steps
     optimizer_llm_dict["temperature"] = optimizer_gpt_temperature
-    optimizer_llm_dict["model_type"] = optimizer_llm_name.lower()
+    optimizer_llm_dict["model_type"] = optimizer_llm_name.lower() # e.g., llama3
+
+    # 直接綁定 prompt_utils.call_ollama_server_func
     call_optimizer_server_func = functools.partial(
-        prompt_utils.call_openai_server_func,
-        model=optimizer_llm_name,
+        prompt_utils.call_ollama_server_func,
+        model=optimizer_llm_name, # 使用 args 傳入的模型名稱 (如 llama3)
         n=num_generated_instructions_in_each_step,
         max_decode_steps=optimizer_gpt_max_decode_steps,
         temperature=optimizer_gpt_temperature,
     )
 
     # ====================== scorer model config ======================
-    if scorer_llm_name in {"gpt-3.5-turbo", "gpt-4"}:
-        openai.api_key = openai_main_api_key
-        scorer_gpt_max_decode_steps = 256
-        scorer_gpt_temperature = 0.0
+    print(f"Using Ollama for Scorer: {scorer_llm_name}")
 
-        scorer_gpt_dict = dict()
-        scorer_gpt_dict["max_decode_steps"] = scorer_gpt_max_decode_steps
-        scorer_gpt_dict["temperature"] = scorer_gpt_temperature
+    scorer_gpt_max_decode_steps = 256
+    
+    # === 修改：使用傳入的參數 ===
+    scorer_gpt_temperature = scorer_temperature 
+    
+    tokenizer = None 
 
-        scorer_llm_dict = {
-            "model_type": scorer_llm_name.lower(),
-        }
-        tokenizer = None
-        scorer_llm_dict.update(scorer_gpt_dict)
-        call_scorer_server_func = functools.partial(
-            prompt_utils.call_openai_server_func,
-            model=scorer_llm_name.lower(),
-            n=1,
-            max_decode_steps=scorer_gpt_max_decode_steps,
-            temperature=scorer_gpt_temperature,
-        )
-    else:
-        assert scorer_llm_name in {
-            "llama2-7b",
-            "llama2-chat-7b",
-            "llama2-chat-13b",
-        }
-        scorer_vllm_max_decode_steps = 256
-        scorer_vllm_temperature = 0.0
-
-        scorer_vllm_dict = dict()
-        scorer_vllm_dict["max_decode_steps"] = scorer_vllm_max_decode_steps
-        scorer_vllm_dict["temperature"] = scorer_vllm_temperature
-
-        scorer_llm_dict = {
-            "model_type": scorer_llm_name.lower(),
-        }
-        scorer_llm_dict.update(scorer_vllm_dict)
-        model_path = prompt_utils.model2model_path[scorer_llm_name]
-        model = prompt_utils.load_vllm_llm(model_path, tensor_parallel_size=len(gpus))
-        tokenizer = model.get_tokenizer()
-        call_scorer_server_func = functools.partial(
-            prompt_utils.call_vllm_server_func,
-            model=model,
-            llm_name=scorer_llm_name,
-            max_decode_steps=scorer_vllm_max_decode_steps,
-            temperature=scorer_vllm_temperature,
-        )
+    scorer_llm_dict = {
+        "model_type": scorer_llm_name.lower(),
+        "max_decode_steps": scorer_gpt_max_decode_steps,
+        "temperature": scorer_gpt_temperature,
+    }
+    
+    # 綁定函式
+    call_scorer_server_func = functools.partial(
+        prompt_utils.call_ollama_server_func,
+        model=scorer_llm_name, 
+        n=1,
+        max_decode_steps=scorer_gpt_max_decode_steps,
+        temperature=scorer_gpt_temperature, # 這裡也會用到
+    )
 
     # ====================== try calling the model ======================
     print("\n======== testing the scorer and optimizer servers ===========")
@@ -233,9 +215,14 @@ def prompt_optimization(
     # ====================== load dataset, dataset setting and dataset ratio ======================
 
     Dataset_class = Base_Dataset(dataset_name)
-    data_list = Dataset_class.read_data(task_name)
-    train_ratio, eval_ratio, test_ratio = Dataset_class.get_ratio()
-
+    
+    # [MODIFIED] 傳入 mmlu 參數
+    data_list = Dataset_class.read_data(
+        task_name, 
+        mmlu_subsets=mmlu_subsets, 
+        mmlu_train_num=mmlu_train_num,
+        shuffle_train_data=shuffle_train_data
+    )
     # ====================== sample data ======================
     evaluating_datas = []  # Data prepared for evaluation
     for data in data_list:

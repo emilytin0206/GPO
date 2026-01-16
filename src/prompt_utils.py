@@ -6,6 +6,7 @@ import os
 from typing import List
 from transformers import Conversation
 from vllm import LLM, SamplingParams
+import requests
 
 model2model_path = {
     "llama2-chat-7b": "meta-llama/Llama-2-7b-chat-hf",
@@ -13,7 +14,51 @@ model2model_path = {
     "llama2-chat-7b": "meta-llama/Llama-2-7b-hf",
 }
 
+def call_ollama_server_func(
+    prompt, model, url="http://localhost:11434/api/chat", n=1, max_decode_steps=256, temperature=0.8
+):
+    """The function to call Ollama API."""
+    headers = {"Content-Type": "application/json"}
+    
+    # 處理 prompt 可能是字串或列表的情況
+    prompts = [prompt] if isinstance(prompt, str) else prompt
+    results = []
 
+    for p in prompts:
+        # Ollama API 格式
+        payload = {
+            "model": model,
+            "messages": [{"role": "user", "content": p}],
+            "stream": False,
+            "options": {
+                "temperature": temperature,
+                "num_predict": max_decode_steps
+            }
+        }
+        
+        current_prompt_responses = []
+        # 因為 Ollama API 一次通常只回傳一個結果，若需要 n 個，我們用迴圈跑 n 次
+        for _ in range(n):
+            try:
+                response = requests.post(url, json=payload, headers=headers)
+                response.raise_for_status()
+                data = response.json()
+                if 'message' in data and 'content' in data['message']:
+                    current_prompt_responses.append(data['message']['content'])
+                else:
+                    current_prompt_responses.append("")
+            except Exception as e:
+                print(f"Error calling Ollama: {e}")
+                current_prompt_responses.append("")
+        
+        # 根據輸入格式決定回傳格式 (維持與原專案介面一致)
+        if isinstance(prompt, str):
+            return current_prompt_responses # 回傳 list of strings
+        else:
+            results.extend(current_prompt_responses)
+
+    return results
+    
 def call_openai_server_func(
     prompt, n=1, model="gpt-3.5-turbo", max_decode_steps=20, temperature=0.8
 ):
