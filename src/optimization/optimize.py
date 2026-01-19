@@ -94,7 +94,7 @@ def prompt_optimization(
     num_search_epochs,
     num_generated_instructions_in_each_step,
     scorer_llm_name,
-    scorer_temperature=0.0,
+    scorer_temperature,
     include_qa,
     evaluate_generated_ins_on_few_shot,
     few_shot_num,
@@ -215,6 +215,7 @@ def prompt_optimization(
     # ====================== load dataset, dataset setting and dataset ratio ======================
 
     Dataset_class = Base_Dataset(dataset_name)
+    train_ratio, eval_ratio, test_ratio = Dataset_class.get_ratio()
     
     # [MODIFIED] 傳入 mmlu 參數
     data_list = Dataset_class.read_data(

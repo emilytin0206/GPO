@@ -12,10 +12,18 @@ sys.path.insert(0, GPO_ROOT_PATH)
 
 
 def calculate_sentence_similarity(x, string_list, k):
-    model = SentenceTransformer('meta-llama/Llama-2-7b-hf')    
-    model.to('cuda')
+    # 修改：使用作者確認的 BGE-base 模型
+    # v1.5 是目前的標準版本，效果優於舊版
+    model = SentenceTransformer('BAAI/bge-base-en-v1.5') 
+    
+    # 如果您的機器有 GPU，保留這行；如果是 Mac M1/M2 或純 CPU，請註解掉或改成 'cpu' / 'mps'
+    if torch.cuda.is_available():
+        model.to('cuda')
+    else:
+        model.to('cpu') 
 
     with torch.no_grad():
+        # 注意：BGE v1.5 可以直接 encode，不需要額外的指令前綴 (instruction) 用於相似度計算
         embedding_x = model.encode([x], normalize_embeddings=True)
         embeddings_string_list = model.encode(string_list, normalize_embeddings=True)
 
@@ -24,7 +32,6 @@ def calculate_sentence_similarity(x, string_list, k):
     top_k_similar_indices = np.argsort(similarity[0])[::-1][:k]
 
     return top_k_similar_indices
-
 
 class Relavance_Selection:
     def select(self, history_list, select_num, momentum_para_name):

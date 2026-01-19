@@ -94,9 +94,11 @@ class MMLU_Dataset:
         datas = []
         root_data_folder_path = os.path.join(GPO_ROOT_PATH, f"data/MMLU/")
         
-        # 1. 篩選要跑的子集 (Subsets)
         if isinstance(task, list):
-            requested_tasks = task
+            if 'all' in task:  # <--- 新增這行：檢查列表裡是否有 'all'
+                requested_tasks = mmlu_tasks
+            else:
+                requested_tasks = task
         elif task == "all":
             requested_tasks = mmlu_tasks
         else:

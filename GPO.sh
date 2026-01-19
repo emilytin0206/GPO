@@ -2,9 +2,9 @@
 
 OPENAI_API_KEY=""
 OPENAI_API_KEY_LIST=""
-SCORER="llama2-chat-7b"
-OPTIMIZER="gpt-3.5-turbo"
-DATASET="bbh"
+SCORER="qwen2.5:7b"
+OPTIMIZER="qwen2.5:32b"
+DATASET="mmlu"
 TASK="all"
 NUM_SEARCH_EPOCHS=3
 INSTRUCTION_POS="Q_end"

@@ -4,7 +4,6 @@ import time
 import openai
 import os
 from typing import List
-from transformers import Conversation
 from vllm import LLM, SamplingParams
 import requests
 
