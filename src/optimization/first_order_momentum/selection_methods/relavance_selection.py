@@ -12,15 +12,14 @@ sys.path.insert(0, GPO_ROOT_PATH)
 
 
 def calculate_sentence_similarity(x, string_list, k):
-    # 修改：使用作者確認的 BGE-base 模型
     # v1.5 是目前的標準版本，效果優於舊版
-    model = SentenceTransformer('BAAI/bge-base-en-v1.5') 
+    model = SentenceTransformer('BAAI/bge-base-en-v1.5',device = 'cpu') 
     
     # 如果您的機器有 GPU，保留這行；如果是 Mac M1/M2 或純 CPU，請註解掉或改成 'cpu' / 'mps'
-    if torch.cuda.is_available():
-        model.to('cuda')
-    else:
-        model.to('cpu') 
+    # if torch.cuda.is_available():
+    #     model.to('cuda')
+    # else:
+    #     model.to('cpu') 
 
     with torch.no_grad():
         # 注意：BGE v1.5 可以直接 encode，不需要額外的指令前綴 (instruction) 用於相似度計算

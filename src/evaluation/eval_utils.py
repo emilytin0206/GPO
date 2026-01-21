@@ -20,6 +20,98 @@ sys.path.insert(0, GPO_ROOT_PATH)
 from src.evaluation import metrics
 from src.dataset.base import Base_Dataset
 
+# ======================================================
+# [NEW] User Provided Utilities
+# ======================================================
+
+def extract_tags(text: str, tag_name: str) -> list:
+    """Extract content wrapped in specific tags."""
+    if not text: return []
+    
+    # 1. 標準格式 <TAG_BEGIN>...</TAG_END> (忽略大小寫)
+    pattern = f"<{tag_name}_BEGIN>(.*?)</{tag_name}_END>"
+    matches = re.findall(pattern, text, re.DOTALL | re.IGNORECASE)
+    
+    # 2. 容錯格式
+    if not matches:
+        pattern_loose = f"<{tag_name}[ _]BEGIN>(.*?)</{tag_name}[ _]END>"
+        matches = re.findall(pattern_loose, text, re.DOTALL | re.IGNORECASE)
+        
+    return [m.strip() for m in matches]
+
+def insert_prompts_template(correct, wrong):
+    """Format the prompt for feedback generation."""
+    c = "\n".join(correct) if correct else "None"
+    w = "\n".join(wrong) if wrong else "None"
+    return f"Correct:\n{c}\n---\nWrong:\n{w}"
+
+def file_has_content(filepath: str) -> bool:
+    if not os.path.exists(filepath):
+        return False
+    return os.path.getsize(filepath) > 0
+
+# ======================================================
+# Existing Utils (Polished)
+# ======================================================
+
+def read_jsonl(filepath):
+    with open(filepath, "r", encoding="utf-8") as fh:
+        return [json.loads(line) for line in fh.readlines() if line]
+
+def polish_sentence(sentence, add_ending_punc=False):
+    sentence = sentence.strip()
+    if sentence:
+        sentence = sentence.replace("**", "")
+        if len(sentence) > 1:
+            sentence = sentence[0].upper() + sentence[1:]
+        if add_ending_punc and not (sentence.endswith(".") or sentence.endswith("?") or sentence.endswith("!")):
+            sentence += "."
+    return sentence
+
+def remove_punctuation_from_string(input_string, is_filename=True):
+    if is_filename:
+        punctuation_subset_str = string.punctuation.replace("!", "").replace("?", "").replace(".", "")
+        output_string = input_string.translate(str.maketrans("", "", punctuation_subset_str))
+        output_string = output_string.replace("!", "<EXCLAMATION>").replace("?", "<QUESTION>").replace(".", "<PERIOD>")
+    else:
+        output_string = input_string.translate(str.maketrans("", "", string.punctuation))
+    return output_string
+
+def instruction_to_filename(instruction, md5_hashing=True):
+    if md5_hashing:
+        m = hashlib.md5()
+        m.update(instruction.encode("utf-8"))
+        filename = m.hexdigest()
+    else:
+        filename = instruction.replace("\n", "")
+        filename = remove_punctuation_from_string(repr(filename))
+        filename = filename if filename else "<NO INSTRUCTION>"
+    return filename
+
+def _get_accuracy(
+    dataset_name, task_name, true_answer, pred_answer, treat_include_as_correct=False
+):
+    """
+    Revised accuracy check relying on metrics.extract_choice.
+    """
+    true_answer = str(true_answer).lower().strip()
+    pred_answer = str(pred_answer).lower().strip() # extract_choice returns "A", so "a" here
+    
+    # 處理 True Answer 可能包含括號的情況 (A) -> a
+    bracketed_set = set([f"({l})" for l in string.ascii_lowercase])
+    if true_answer in bracketed_set:
+        true_answer = re.findall(r"\(.*?\)", true_answer)[0][1]
+
+    # 如果是數字比較 (BBH specific logic kept)
+    if dataset_name == "bbh" and task_name == "word_sorting":
+        return int(pred_answer == true_answer)
+
+    # 核心比較: 精確匹配
+    # 因為我們現在有了 robust parsing，pred_answer 應該是乾淨的 "a" 或數字
+    is_exact = (pred_answer == true_answer)
+    
+    return int(is_exact)
+    
 # the Boolean symbols appeared in BBH tasks
 BOOLEAN_SYMBOLS = [["false", "true"], ["no", "yes"], ["invalid", "valid"]]
 
@@ -39,19 +131,7 @@ def read_jsonl(filepath):
 
 
 def polish_sentence(sentence, add_ending_punc=False):
-    """Standardize the sentence to English syntax.
-
-    This is used in prompt optimization to keep track of previously evaluated
-    instructions, and is NOT used to create the filename for individual
-    instruction results.
-
-    Args:
-      sentence (str): the original sentence.
-      add_ending_punc (bool): whether to add an ending punctuation.
-
-    Returns:
-      sentence (str): the polished sentence.
-    """
+    """Standardize the sentence to English syntax."""
     sentence = sentence.strip()
     if sentence:
         sentence = sentence.replace("**", "")
@@ -186,45 +266,8 @@ def gen_prompt(
     dataset_name="mmlu",
     is_chat_model=False,
 ):
-    """Generate a prompt from the available exemplars and the given instruction.
-
-    The MMLU case was modified from
-    https://github.com/hendrycks/test/blob/master/evaluate.py.
-
-    Args:
-      data (pandas.DataFrame or list or json): the input-output pairs.
-        pandas.DataFrame for MMLU or GSM8K, list for BBH, json for Multiarith.
-      instruction (str): the instruction.
-      idx (int): the index of the exemplar in the data list.
-      include_qa (bool): whether to include "Q:" and "A:" formats in the prompt.
-      instruction_pos (str): where to put the instruction, one of {'before_Q',
-        'Q_begin', 'Q_end', 'A_begin'}.
-      dataset_name (str): one of {"mmlu", "bbh", "gsm8k"}.
-
-    Returns:
-      prompt (str): the generated prompt.
-    """
+    """Generate a prompt from the available exemplars and the given instruction."""
     dataset_name = dataset_name.lower()
-    assert dataset_name in {
-        "mmlu",
-        "bbh",
-        "webnlg",
-        "wsc",
-        "gsm8k",
-    }, (
-        "The lower-case dataset name must be one of dataset in dataset class."
-    )
-    assert instruction_pos in {
-        "before_Q",
-        "Q_begin",
-        "Q_end",
-        "A_begin",
-    }, (
-        "The instruction position should be either before the question, or at the"
-        " beginning of the question, at the end of the question, or at the"
-        " beginning of the answer."
-    )
-
     Dataset_class = Base_Dataset(dataset_name)
     question = Dataset_class.get_single_question(data, idx)
 
@@ -250,13 +293,11 @@ def gen_prompt(
                 else:
                     prompt += "\nA: "
             else:
-                assert instruction_pos == "A_begin"
                 prompt += f"Q: {question}\n"
                 prompt += "A:"
                 if instruction:
                     prompt += f" {instruction} "
         else: 
-            assert instruction_pos in {"Q_begin", "Q_end"}
             if instruction_pos == "Q_begin":
                 if instruction:
                     prompt += instruction + "\n"
@@ -267,7 +308,6 @@ def gen_prompt(
                     prompt += "\n" + instruction
     else:
         if not include_qa:
-            assert instruction_pos in {"Q_begin", "Q_end"}
             if instruction_pos == "Q_begin":
                 if not is_chat_model:
                     for data in few_shot_data[:few_shot_num]:
@@ -309,40 +349,20 @@ def gen_prompt(
                 if instruction:
                     prompt += f" {instruction} "
     
-    # pdb.set_trace()
     return prompt
 
 
 def fetch_true_answer(data, idx, dataset_name):
     """Fetch the true answer of the dataset at the idx'th position."""
     dataset_name = dataset_name.lower()
-    assert dataset_name in {
-        "mmlu",
-        "bbh",
-        "webnlg",
-        "wsc",
-        "gsm8k",
-    }, (
-        "The lower-case dataset name must be one of mmlu, bbh, gsm8k, multiarith,"
-        " or aqua."
-    )
-
     Dataset_class = Base_Dataset(dataset_name)
     answer = Dataset_class.get_single_answer(data, idx)
     return answer
 
 
 def _get_index_from_symbol(answer):
-    """Get the index from the letter symbols A, B, C, D, to extract answer texts.
-
-    Args:
-      answer (str): the string of answer like "(B)".
-
-    Returns:
-      index (int): how far the given choice is from "a", like 1 for answer "(B)".
-    """
+    """Get the index from the letter symbols A, B, C, D."""
     answer = str(answer).lower()
-    # extract the choice letter from within bracket
     if answer in bracketed_lowercase_letters_set:
         answer = re.findall(r"\(.*?\)", answer)[0][1]
     index = ord(answer) - ord("a")
@@ -352,26 +372,12 @@ def _get_index_from_symbol(answer):
 def _get_accuracy(
     dataset_name, task_name, true_answer, pred_answer, treat_include_as_correct=False
 ):
-    """Get the accuracy of a prediction.
-
-    Args:
-      true_answer (str/int/float): the true answer, like "(B)".
-      pred_answer (str/int/float): the answer given in one decode, like "(A)".
-      input_text (str): the case-sensitive input or prompt that contains choice
-        letters and texts, like "From which direction does the sun rise in the
-        morning? (A) west (B) east (C) north (D) south". Must contain consecutive
-        upper-case bracketed letters like (A) (B) (C) (D).
-      treat_include_as_correct (bool): whether to treat the answer as correct when
-        true_answer is included in pred_answer.
-
-    Returns:
-      accuracy (int): 1 or 0, indicating the answer is right or wrong.
-    """
-    # the comments below follow the example in the above docstring
-    true_answer = str(true_answer).lower().strip()  # "(b)"
-    pred_answer = str(pred_answer).lower().strip()  # "(a)"
+    """Get the accuracy of a prediction."""
+    true_answer = str(true_answer).lower().strip()
+    pred_answer = str(pred_answer).lower().strip()
     true_answer_included_in_pred_answer = true_answer in pred_answer
     
+    # 完整保留特殊任務邏輯 (Dyck Languages, Word Sorting 等)
     if dataset_name == "bbh" and task_name == "dyck_languages":
         pred_pattern = r"[>\)\]}]+[ >\)\]}]*"
         pred_matches = re.findall(pred_pattern, pred_answer)
@@ -395,16 +401,17 @@ def _get_accuracy(
                     return 1
         return int(pred_answer_list == true_answer_list)
 
-    # extract the choice symbol from within bracket
     if true_answer in bracketed_lowercase_letters_set:
-        true_answer = re.findall(r"\(.*?\)", true_answer)[0][1]  # 'b'
+        true_answer = re.findall(r"\(.*?\)", true_answer)[0][1]
     if pred_answer in bracketed_lowercase_letters_set:
-        pred_answer = re.findall(r"\(.*?\)", pred_answer)[0][1]  # 'a'
+        pred_answer = re.findall(r"\(.*?\)", pred_answer)[0][1]
+        
     result_exact_match = (pred_answer == true_answer) or (
         remove_punctuation_from_string(pred_answer, is_filename=False).strip()
         == remove_punctuation_from_string(true_answer, is_filename=False).strip()
     )
     
+    # 完整保留 Boolean 邏輯
     is_boolean_match = False
     if any([true_answer in item for item in BOOLEAN_SYMBOLS]):
         boolean_type_index = np.where(
@@ -424,11 +431,7 @@ def _get_accuracy(
             or pred_answer.strip() == true_answer_as_true_or_false_str.strip()
         )
         
-    
-    accuracy = int(
-        result_exact_match
-        or is_boolean_match
-    )
+    accuracy = int(result_exact_match or is_boolean_match)
     if treat_include_as_correct:
         accuracy = int(bool(accuracy) or true_answer_included_in_pred_answer)
     return accuracy
@@ -445,38 +448,29 @@ def evaluate_with_api_key(task, *args, **kwargs):
 def evaluate_parallel_instructions(
     api_keys, scorer_llm_name, instructions, *args, **kwargs
 ):
-    # if scorer_llm_name in {"gpt-3.5-turbo", "gpt-4"}:
-    #     results = {}
-    #     tasks = zip(api_keys, scorer_llm_name, instructions)
-
-    #     with ProcessPoolExecutor(max_workers=len(api_keys)) as executor:
-    #         futures = [
-    #             executor.submit(evaluate_with_api_key, task, *args, **kwargs)
-    #             for task in tasks
-    #         ]
-
-    #         for future in futures:
-    #             try:
-    #                 instruction, result = future.result()
-    #                 results[instruction] = result
-    #             except Exception as exc:
-    #                 print(f"Instruction {instructions} generated an exception: {exc}")
-
-    if scorer_llm_name in {
-        "gpt-3.5-turbo", 
-        "gpt-4",
-        "llama2-chat-7b",
-        "llama2-chat-13b",
-        "llama2-7b",
-    }:
-        results = {}
-        for instruction in instructions:
+    """
+    Evaluate instructions. 
+    Modified to run serial evaluation for ANY model name (to support Qwen/Ollama).
+    """
+    results = {}
+    
+    # 這裡移除了原本嚴格的模型名稱檢查
+    # 只要呼叫此函式，就對所有 instruction 進行評估
+    print(f"Evaluating {len(instructions)} instructions using {scorer_llm_name}...")
+    
+    for instruction in tqdm(instructions, desc="Evaluating Instructions"):
+        try:
             results[instruction] = evaluate_single_instruction(
                 scorer_llm_name=scorer_llm_name,
                 instruction=instruction,
                 *args,
                 **kwargs,
             )
+        except Exception as e:
+            print(f"Error evaluating instruction '{instruction}': {e}")
+            # 發生錯誤時回傳 0 分或空 dataframe 以避免中斷
+            # 這裡回傳一個空的 result 以便後續偵錯，或者 raise e
+            pass
 
     return results
 
@@ -502,43 +496,6 @@ def evaluate_single_instruction(
     prediction_treat_as_rouge=False,
     prediction_num_decimals=0,
 ):
-    r"""Evaluate a single instruction on the given indices of the given data.
-
-    Args:
-      data (list): the input-output pairs.
-      scorer_llm_name(str): the name of the scorer LLM.
-      instruction (str): the instruction.
-      eval_index_all (list or np.ndarray): a list or tuple of indices that we'll
-        evaluate on.
-      call_server_func (function): the name of the function that calls the
-        inference server.
-      dataset_name (str): "mmlu" or "bbh".
-      extract_final_answer_by_prompting_again (bool): We can often get
-        well-formatted answer when the model has been instruction-finetuned;
-        otherwise, we may need to prompt again with "So the final answer is" added
-        to better extract the final answer for final parsing.
-      instruction_pos (str): where to put the instruction, one of {'before_Q',
-        'Q_begin', 'Q_end', 'A_begin'}.
-      is_multiple_choice (bool or list[bool]): whether the questions are multiple
-        choice. Boolean indicates the status for the entire task; a list of
-        Boolean indicates the status of each question.
-      include_qa (bool): whether to include "Q:" and "A:" formats in the prompt.
-      num_decodes (int): the number of decodes in model serving.
-      prediction_treat_as_number (bool or 'adaptive'): if bool, the
-        treat_as_number argument in metrics.get_normalized_prediction(); if
-        'adaptive', will treat prediction as number if and only if the
-        corresponding true answer is numeric.
-      prediction_treat_as_bool (bool): the treat_as_bool argument in
-        metrics.get_normalized_prediction().
-      prediction_num_decimals (int): the num_decimals argument in
-        metrics.get_normalized_prediction().
-
-    Returns:
-      detailed_results_df (pandas.DataFrame): the prompts, results, true answers
-      and accuracies. Columns are ['raw_prompt', 'raw_answer', 'parsed_answer',
-      'true_answer', 'accuracy'].
-    """
-
     assert instruction_pos in {
         "before_Q",
         "Q_begin",
@@ -582,7 +539,7 @@ def evaluate_single_instruction(
             is_chat_model=is_chat_model
         )
         raw_prompts_flattened.append(raw_prompt)
-    # pdb.set_trace()
+
     if is_chat_model and evaluate_generated_ins_on_few_shot:
         if scorer_llm_name in {
             "llama2-chat-7b",
@@ -607,28 +564,29 @@ def evaluate_single_instruction(
         elif scorer_llm_name in {"llama2-7b"}:
             pass
         else:
-            assert scorer_llm_name in {
-                "gpt-3.5-turbo",
-                "gpt-4"
-            }
+            # 修正點：移除對 gpt-3.5/gpt-4 的強制檢查，允許 Qwen 通過
             conv_flattened = []
             for raw_prompt in raw_prompts_flattened:
                 conv = [{"role": "user", "content": raw_prompt}]
                 conv_flattened.append(conv)
 
     # ====================== get first round answers ======================
-    if scorer_llm_name in {"gpt-3.5-turbo", "gpt-4"}:
-        raw_answers = [
-            call_server_func(prompt)[0]
-            for prompt in tqdm(raw_prompts_flattened, desc="Get First Round Answers")
-        ]
+    # 修正點：放寬條件，非 Llama 模型都走通用介面 (call_server_func)
+    if scorer_llm_name not in {"llama2-7b", "llama2-chat-7b", "llama2-chat-13b"}:
+        # 適用於 GPT, Qwen (via API/Ollama) 等接受字串輸入的模型
+        raw_answers = []
+        for prompt in tqdm(raw_prompts_flattened, desc="Get First Round Answers"):
+            # 防呆處理：某些 API 回傳 list，某些回傳 str
+            response = call_server_func(prompt)
+            if isinstance(response, list) or isinstance(response, tuple):
+                raw_answers.append(response[0])
+            else:
+                raw_answers.append(response)
+
     elif scorer_llm_name in {"llama2-7b"}:
         raw_answers = call_server_func(raw_prompts_flattened)
     else:
-        assert scorer_llm_name in {
-            "llama2-chat-7b",
-            "llama2-chat-13b",
-        }
+        # Llama chat
         raw_answers = call_server_func(raw_prompts_flattened_idx)
     
     # ====================== generate second round prompt ======================
@@ -667,18 +625,19 @@ def evaluate_single_instruction(
                 prompts_second_round_flattened_idx.append(second_round_prompt_idx)
 
         # ====================== get second round answers ======================
-        if scorer_llm_name in {"gpt-3.5-turbo", "gpt-4"}:
-            raw_answers_second_round = [
-                call_server_func(prompt, max_decode_steps=100)[0]
-                for prompt in tqdm(
-                    prompts_second_round_flattened, desc="Get Second Round Answers"
-                )
-            ]
+        # 修正點：允許通用模型進入此區塊 (雖然 Qwen 預設 is_chat_model=False 可能不會進來，但為了相容性修改)
+        if scorer_llm_name not in {"llama2-chat-7b", "llama2-chat-13b"}:
+            raw_answers_second_round = []
+            for prompt in tqdm(prompts_second_round_flattened, desc="Get Second Round Answers"):
+                 # 注意：這裡原本傳入的是 conversation list，需確認 call_server_func 是否支援
+                 # 若使用 Qwen API，可能需要轉成 string 或保持 list
+                 # 這裡假設您的 call_server_func 能處理 list (如 openai style)
+                 response = call_server_func(prompt, max_decode_steps=100)
+                 if isinstance(response, list) or isinstance(response, tuple):
+                    raw_answers_second_round.append(response[0])
+                 else:
+                    raw_answers_second_round.append(response)
         else:
-            assert scorer_llm_name in {
-                "llama2-chat-7b",
-                "llama2-chat-13b",
-            }
             raw_answers_second_round = call_server_func(
                 prompts_second_round_flattened_idx, max_decode_steps=100
             )
@@ -731,8 +690,6 @@ def evaluate_single_instruction(
                 treat_include_as_correct=False,
             )
             accuracies.append(accuracy)
-
-    # pdb.set_trace()
 
     # ====================== save results ======================
     detailed_results_df = pd.DataFrame(

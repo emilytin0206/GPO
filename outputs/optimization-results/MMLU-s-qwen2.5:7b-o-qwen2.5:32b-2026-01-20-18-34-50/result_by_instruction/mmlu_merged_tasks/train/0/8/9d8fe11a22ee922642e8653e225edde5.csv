@@ -1,0 +1,163 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+64,"This question refers to the following information.
+No task is more urgent than that of preserving peace. Without peace our independence means little. The rehabilitation and upbuilding of our countries will have little meaning. Our revolutions will not be allowed to run their course. What can we do? We can do much! We can inject the voice of reason into world affairs. We can mobilize all the spiritual, all the moral, all the political strength of Asia and Africa on the side of peace. Yes, we! We, the peoples of Asia and Africa, 1.4 billion strong.
+Indonesian leader Sukarno, keynote address to the Bandung Conference, 1955
+Like numerous other leaders in Africa, Asia, and the Middle East, Sukarno attempted, but did not completely succeed, in maintaining a neutral stance during
+(A) the Arab-Israeli conflict.
+(B) the Korean War.
+(C) the Cold War.
+(D) the Vietnam conflicts.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To address this question, we need to analyze Sukarno's statement and understand the context in which it was made. The passage emphasizes the importance of peace and unity among Asian and African nations, suggesting a focus on maintaining neutrality during global conflicts.
+
+Let's break down each option:
+
+(A) **The Arab-Israeli conflict**: This conflict began in 1948 but did not gain significant international attention until later years. It is less likely to be the primary context for Sukarno’s address at the Bandung Conference, which was held in April 1955.
+
+(B) **The Korean War**: The Korean War (1950-1953) ended before the Bandung Conference took place. While it was a significant global conflict, it is unlikely to be the main focus of Sukarno's speech at this conference.
+
+(C) **The Cold War**: The Cold War began in 1947 and continued until the early 1990s. It involved a prolonged ideological struggle between the United States and the Soviet Union, with many countries caught in the middle. Given that the Bandung Conference was held in 1955, it is highly relevant to consider this context.
+
+(D) **The Vietnam conflicts**:",A,(C),0
+65,"Which of the following would most effectively act as the primary objective of a business organisation?
+(A) To make a profit
+(B) To procure resources
+(C) To communicate with shareholders
+(D) To mediate between the organisation and the environment
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To determine which of the given options would most effectively act as the primary objective of a business organization, let's analyze each option in detail:
+
+(A) To make a profit: This is one of the fundamental objectives of any for-profit business. Profit-making is essential because it ensures the sustainability and growth of the company. Without making a profit, a business cannot reinvest in its operations, expand its services or products, or meet its financial obligations.
+
+(B) To procure resources: While procuring resources is crucial for the day-to-day functioning and long-term viability of a business, it is more of an operational activity rather than a primary objective. The goal here is to ensure that the company has what it needs to operate efficiently, but this does not directly address the overarching purpose of the organization.
+
+(C) To communicate with shareholders: Communication with shareholders is important for transparency and maintaining good relationships, but it is not the core reason why a business exists. Shareholders are stakeholders who have an interest in the company's performance, but their interests are secondary to the primary objective of generating value through profit-making activities.
+
+(D) To mediate between the organization and the environment: While corporate social responsibility (CSR) initiatives can include efforts to improve environmental sustainability, this is typically a secondary goal. The",D,(A),0
+66,"Physics students are checking the constant acceleration equations of kinematics by measuring the velocity of a tennis ball that is dropped and falls 6 meters and then passes through a photogate. The predicted velocity is 20% above the velocity measured by the photogate. Which of the following best describes the cause of the large percent difference?
+(A) The ball changes its shape while falling.
+(B) The acceleration of gravity varies as the ball is falling.
+(C) Air resistance increases the acceleration of the ball.
+(D) The acceleration of the balls varies with the velocity.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To address this problem, let's first consider the kinematic equations of motion under constant acceleration due to gravity. The relevant equation for velocity when an object is in free fall (ignoring air resistance) is:
+
+\[ v = \sqrt{2gh} \]
+
+where:
+- \( v \) is the final velocity,
+- \( g \) is the acceleration due to gravity (\(9.81 \, \text{m/s}^2\)),
+- \( h \) is the height from which the object falls.
+
+Given that the ball falls 6 meters:
+
+\[ v = \sqrt{2 \times 9.81 \, \text{m/s}^2 \times 6 \, \text{m}} \]
+\[ v = \sqrt{117.72 \, \text{m}^2/\text{s}^2} \]
+\[ v \approx 10.85 \, \text{m/s} \]
+
+This is the theoretical velocity if air resistance were negligible.
+
+However, in reality, air resistance plays a significant role in the motion of the tennis ball. Air resistance acts opposite to the direction of motion and increases with speed, effectively reducing the acceleration of the ball as",A,(D),0
+67,"3 cards are chosen at random from a standard 52-card deck. What is the probability that they form a pair? (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different. For example, 668 is a pair, but 999 is not.)
+(A) \frac{1}{8}
+(B) \frac{1}{36}
+(C) \frac{1}{78}
+(D) \frac{72}{425}
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To determine the probability that three cards chosen at random from a standard 52-card deck form a pair, we need to follow these steps:
+
+1. **Calculate the total number of ways to choose 3 cards out of 52:**
+
+   The number of combinations can be calculated using the binomial coefficient:
+   \[
+   \binom{52}{3} = \frac{52!}{3!(52-3)!} = \frac{52 \times 51 \times 50}{3 \times 2 \times 1} = 22100
+   \]
+
+2. **Calculate the number of ways to form a pair:**
+
+   - First, choose the rank for the pair from the 13 available ranks:
+     \[
+     \binom{13}{1} = 13
+     \]
+   
+   - Next, choose 2 out of the 4 cards of that rank (since there are 4 suits per rank):
+     \[
+     \binom{4}{2} = \frac{4!}{2!(4-2)!} = \frac{4 \times 3}{2 \times 1} = 6",A,(D),0
+68,"This question refers to the following information.
+Yi Yin sacrificed to the former king, and presented the heir-king reverently before the shrine of his grandfather. . . . Yi Yin then clearly described the virtue of the Meritorious Ancestor for the instruction of the young king.
+""Oh! of old the former kings of Xia cultivated earnestly their virtue, and then there were no calamities from Heaven. The spirits of the hills and rivers were all in tranquility; and the birds and beasts enjoyed their existence according to their nature. But their descendant did not follow their example, and Heaven sent down calamities, using our ruler, who possessed of its favor. The attack on Xia may be traced to the orgies in Ming Tiao. . . . Our king of Shang brilliantly displayed his sagely prowess; for oppression he substituted his generous gentleness. Now your Majesty is entering on the inheritance of his virtue; all depends on how you commence your reign.
+""Oh! the former king began with careful attention to the bonds that hold men together. . . . Revere these warnings in your person. . . . The ways of Heaven are not invariable: on the good-doer it sends down all blessings, and on the evil-doer it sends down all miseries. If you not be virtuous, be it in large things or in small, it will bring the ruin of your ancestral temple.""
+—Excerpted and adapted from the Shu Jing, 6th century BCE, China
+Which phrase can be seen as a statement of the roots of Daoist beliefs?
+(A) Our king of Shang brilliantly displayed his sagely prowess.
+(B) The former king began with careful attention to the bonds that hold men together.
+(C) The birds and beasts . . . enjoyed their existence according to their nature.
+(D) The ways of Heaven are not invariable: on the good-doer it sends down all blessings.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To determine which phrase can be seen as a statement of the roots of Daoist beliefs, let's analyze each option in the context provided:
+
+(A) ""Our king of Shang brilliantly displayed his sagely prowess.""
+- This sentence emphasizes the wisdom and virtue of King Shang, but it does not directly reflect Daoist principles. It focuses more on the actions and qualities of a specific ruler.
+
+(B) ""The former king began with careful attention to the bonds that hold men together.""
+- This phrase suggests a focus on social harmony and interpersonal relationships, which aligns with some aspects of Confucian thought rather than Daoism. Daoism emphasizes naturalness and spontaneity over strict social norms.
+
+(C) ""The birds and beasts . . . enjoyed their existence according to their nature.""
+- This sentence reflects the idea that all things should exist in harmony with their natural state, which is a core principle of Daoism. It suggests living in accordance with the Tao (the Way), allowing things to be as they naturally are.
+
+(D) ""The ways of Heaven are not invariable: on the good-doer it sends down all blessings.""
+- This statement reflects a more deterministic view of divine retribution, which is more aligned with Confucian and Legalist thought. Dao",D,(C),0
+69,"What is the work involved if a gas in a 2.0-liter container at 2.4 atmospheres pressure is allowed to expand against a pressure of 0.80 atmosphere?
+(A) -3.2 L atm
+(B) -9.62 L atm
+(C) -4.8 L atm
+(D) +14.4 L atm
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To solve this problem, we need to calculate the work done by the gas during its expansion against a constant external pressure. The formula for work done in such an isobaric (constant pressure) process is given by:
+
+\[ W = -P_{\text{ext}} \Delta V \]
+
+where:
+- \( W \) is the work done,
+- \( P_{\text{ext}} \) is the external pressure against which the gas expands, and
+- \( \Delta V \) is the change in volume.
+
+Given:
+- The initial volume of the gas, \( V_1 = 2.0 \) liters.
+- The final volume of the gas after expansion, let's denote it as \( V_2 \).
+- The external pressure against which the gas expands, \( P_{\text{ext}} = 0.80 \) atmospheres.
+
+First, we need to determine the change in volume (\( \Delta V \)). However, since the problem does not provide the final volume directly, we can infer that the gas is allowed to expand until it reaches a new equilibrium state where the internal pressure equals the external pressure of 0.80 atm.
+
+To find \( V_2 \), we use the ideal",A,(A),1
+70,"What does Milton Friedman believe to be the sole responsibility of business?
+(A) The only social responsibility of business is to its shareholders
+(B) Managers should act in ways that balance the interest of society and shareholders
+(C) The primary responsibility organizations have is to its employees
+(D) The primary responsibility organizations have is to its stakeholders
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","Milton Friedman, a prominent economist and Nobel laureate, is well-known for his belief in the role of businesses within a free-market economy. According to Friedman's perspective, the sole responsibility of business is to its shareholders. This view is encapsulated in option (A).
+
+To break down the options:
+
+(A) The only social responsibility of business is to its shareholders.
+- This aligns with Friedman’s famous statement: ""The social responsibility of business is to increase its profits."" He argued that businesses should focus on maximizing shareholder value, as this is their primary and sole responsibility.
+
+(B) Managers should act in ways that balance the interest of society and shareholders.
+- This option suggests a more balanced approach where managers consider both societal interests and shareholder interests. However, Friedman’s view does not support balancing these interests; rather, he advocates for prioritizing profit maximization over other social responsibilities.
+
+(C) The primary responsibility organizations have is to its employees.
+- While employee welfare can be important, Friedman did not place this as the primary responsibility of businesses. His focus was on maximizing profits and shareholder value.
+
+(D) The primary responsibility organizations have is to its stakeholders.
+- Stakeholder theory suggests that companies should consider a wide range of interests, including customers, suppliers, communities, and employees,",D,(A),0
+71,"This question refers to the following information.
+""The question as to who, and what, is responsible for African underdevelopment can be answered at two levels. Firstly, the answer is that the operation of the imperialist system bears major responsibility for African economic retardation by draining African wealth and by making it impossible to develop more rapidly the resources of the continent. Secondly, one has to deal with those who manipulate the system and those who are either agents or unwitting accomplices of the said system. The capitalists of Western Europe were the ones who actively extended their exploitation from inside Europe to cover the whole of Africa.""
+Walter Rodney, historian, How Europe Underdeveloped Africa, 1974
+Which of the following best explains the importance of trading contacts with Europeans for Sub-Saharan Africans in the period 1450 to 1750 C.E.?
+(A) Sub-Saharan Africans relied on European merchants to sustain population growth through the constant importation of New World foodstuffs.
+(B) Sub-Saharan Africans consolidated new states and kingdoms by trading with the Europeans for firearms.
+(C) Sub-Saharan Africans depended on European merchants as the sole purchasers of slaves.
+(D) Sub-Saharan Africans allied with European powers to evict Muslim and Arab merchant princes from encroaching on their sovereignty.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, and ensure alignment with specific domain principles.","To address this question, we need to analyze the historical context provided by Walter Rodney's work ""How Europe Underdeveloped Africa"" (1974) and apply it to the period from 1450 to 1750 C.E., which is often referred to as the early phase of European colonial expansion in Sub-Saharan Africa.
+
+Let's examine each option:
+
+(A) **Sub-Saharan Africans relied on European merchants to sustain population growth through the constant importation of New World foodstuffs.**
+- This statement does not align with historical evidence from the period 1450 to 1750 C.E. The introduction of New World crops like maize and potatoes occurred later, around the late 16th century or early 17th century, primarily through Spanish and Portuguese trade routes rather than direct European contact in Sub-Saharan Africa during this earlier period.
+
+(B) **Sub-Saharan Africans consolidated new states and kingdoms by trading with the Europeans for firearms.**
+- This option is supported by historical evidence. During the 15th to 18th centuries, African rulers and states often sought to acquire firearms from European traders as a means of enhancing their military capabilities and consolidating power. The acquisition of firearms through trade was crucial in",A,(B),0

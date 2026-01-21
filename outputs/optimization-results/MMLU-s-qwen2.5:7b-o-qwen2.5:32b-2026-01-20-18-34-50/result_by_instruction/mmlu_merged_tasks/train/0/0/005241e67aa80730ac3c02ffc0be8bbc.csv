@@ -1,0 +1,208 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+0,"At how many points on the interval [0,π] does f(x) = 2 sin x + sin 4x satisfy the Mean Value Theorem?
+(A) 1
+(B) 2
+(C) 3
+(D) 4
+Let's think step by step.","To determine how many points on the interval \([0, \pi]\) the function \(f(x) = 2\sin x + \sin 4x\) satisfies the Mean Value Theorem (MVT), we need to follow these steps:
+
+1. **Verify that \(f(x)\) is continuous and differentiable on \([0, \pi]\):**
+   - The functions \(\sin x\) and \(\sin 4x\) are both continuous and differentiable everywhere.
+   - Therefore, their linear combination \(2\sin x + \sin 4x\) is also continuous and differentiable on the interval \([0, \pi]\).
+
+2. **Compute the derivative of \(f(x)\):**
+   \[
+   f'(x) = \frac{d}{dx}(2\sin x + \sin 4x) = 2\cos x + 4\cos 4x
+   \]
+
+3. **Apply the Mean Value Theorem:**
+   - According to the MVT, there exists at least one point \(c\) in the open interval \((0, \pi)\) such that:
+     \[
+     f'(c) = \frac{f(\pi) -",C,(D),0
+1,"The circle $2x^2 = -2y^2 + 12x - 4y + 20$ is inscribed inside a square which has a pair of sides parallel to the x-axis. What is the area of the square?
+(A) 80
+(B) \sqrt{20}
+(C) 2\sqrt{20}
+(D) 20
+Let's think step by step.","To find the area of the square in which the circle is inscribed, we first need to determine the radius and center of the circle from its given equation.
+
+The given equation of the circle is:
+\[2x^2 = -2y^2 + 12x - 4y + 20\]
+
+First, let's rearrange this equation into a standard form by moving all terms to one side:
+\[2x^2 + 2y^2 - 12x + 4y - 20 = 0\]
+Divide the entire equation by 2 for simplicity:
+\[x^2 + y^2 - 6x + 2y - 10 = 0\]
+
+Next, we complete the square for both \(x\) and \(y\).
+
+For \(x\):
+\[x^2 - 6x \quad \text{can be written as} \quad (x-3)^2 - 9\]
+
+For \(y\):
+\[y^2 + 2y \quad \text{can be written as} \quad (y+1)^2 - 1\]
+
+Substitute these back into the equation:
+\[(x-3)^2 - ",A,(A),1
+2,"This question refers to the following information.
+Questions to the passage below, an account given to a French officer in Algeria in the 1830s by a member of an Arab slave trade caravan.
+The Slave Trade
+All of you [soldiers], are summoned . . . to hunt the idolatrous Koholanes [a pejorative word for ""black Africans""]. . . . The soldiery divided themselves into two companies . . . with orders to attack places without defenses and to carry off the inhabitants as well as seizing all peasants busy cultivating their fields. . . . Whilst waiting for the return of the companies despatched to hunt Negroes, we went every day to the slave market where we bought at the following prices:
+A Negro with beard………………10 or 15,000 cowries.
+They are not considered as merchandise since one has little chance of preventing them from escaping.
+An adult Negress………………..10 or 15,000 cowries for the same reasons
+An adolescent Negro………………….30,000 cowries
+A young Negress ……………………50–60,000 cowries
+The price varies according to whether she is more or less beautiful.
+A male Negro child……………………..45,000 cowries
+A female Negro child ……………………….35–40,000 cowries
+Finally, our caravan which had set out from Algeria with sixty-four camels and only sixteen persons, was now augmented by four hundred slaves, of whom three hundred were women. . . . It was at this point that suddenly a confused noise of cries and sobs passed from one group of slaves to another and reached our own. . . . Some rolled on the ground, clung to bushes and absolutely refused to walk. . . . They could only be got up with mighty lashes of the whip and by rendering them completely bloody.
+Which statement best supports the argument that religion played a role in the Arab slave trade?
+(A) Seizing all peasants busy cultivating their fields
+(B) With orders to attack places without defenses
+(C) Four hundred slaves, of whom three hundred were women
+(D) All of you [soldiers], are summoned . . . to hunt the idolatrous Koholanes
+Let's think step by step.","To determine which statement best supports the argument that religion played a role in the Arab slave trade based on the passage, let's analyze each option:
+
+(A) ""Seizing all peasants busy cultivating their fields"" - This statement refers to the method of capturing slaves but does not directly mention anything about religion.
+
+(B) ""With orders to attack places without defenses"" - Similar to option A, this statement describes a military tactic and does not specifically relate to religious motivations or beliefs.
+
+(C) ""Four hundred slaves, of whom three hundred were women"" - This is a factual statement regarding the number and gender distribution of slaves but does not indicate any religious context.
+
+(D) ""All of you [soldiers], are summoned . . . to hunt the idolatrous Koholanes"" - This statement directly mentions that the soldiers were ordered to attack people based on their religion, specifically calling them ""idolatrous."" The term ""idolatrous"" implies a religious or cultural difference, suggesting that one of the reasons for the slave trade was the belief in the superiority of Islam over other religions.
+
+Given this analysis, option (D) is the statement that best supports the argument that religion played a role in the Arab slave trade. It explicitly mentions the religious basis for targeting and capturing",A,(D),0
+3,"The state of being unable to make an informed, reasoned decision about a product purchase is known as?
+(A) Consumer inclusion
+(B) Consumer competence
+(C) Consumer exclusion
+(D) Consumer vulnerability
+Let's think step by step.","To determine the correct answer, let's analyze each option in relation to the state of being unable to make an informed, reasoned decision about a product purchase:
+
+1. **Consumer Inclusion**: This term generally refers to the process or state where consumers are included in certain activities or decisions, such as market research or policy-making. It does not directly relate to the inability to make a decision.
+
+2. **Consumer Competence**: This term typically refers to the ability of consumers to understand and use information effectively to make informed choices. The opposite of this would be a lack of competence, which aligns with being unable to make an informed, reasoned decision about a product purchase.
+
+3. **Consumer Exclusion**: This term usually refers to the process or state where certain groups are excluded from participating in economic activities or markets. It does not directly relate to the inability to make a decision based on lack of information.
+
+4. **Consumer Vulnerability**: This term generally refers to the susceptibility of consumers to exploitation, harm, or manipulation due to various factors such as lack of knowledge, resources, or power. While it can encompass situations where consumers are unable to make informed decisions, it is broader and includes other aspects like being easily influenced by marketing tactics.
+
+Given these definitions, the most appropriate term",A,(D),0
+4,"A nonconducting sphere is given a nonzero net electric charge, +Q, and then brought close to a neutral conducting sphere of the same radius. Which of the following will be true?
+(A) An electric field will be induced within the conducting sphere.
+(B) The conducting sphere will develop a net electric charge of –Q.
+(C) The spheres will experience an electrostatic attraction.
+(D) The spheres will experience an electrostatic repulsion.
+Let's think step by step.","To solve this problem, let's analyze each option step-by-step:
+
+1. **Understanding the Setup:**
+   - We have a nonconducting sphere with a net positive charge \(+Q\).
+   - A neutral conducting sphere of the same radius is brought close to it.
+
+2. **Option (A): An electric field will be induced within the conducting sphere.**
+
+   When a charged object approaches a conductor, an electric field is indeed induced in the conductor. This induced electric field tries to oppose the external field and can cause charges to rearrange themselves on the surface of the conductor. So, this statement is true.
+
+3. **Option (B): The conducting sphere will develop a net electric charge of –Q.**
+
+   In a conductor, charges are free to move. When a positively charged object approaches a neutral conductor, positive charges in the conductor will be repelled towards the side away from the nonconducting sphere, and negative charges will be attracted to the side closer to the nonconducting sphere. However, the total charge of the conductor remains zero because it is initially neutral. Therefore, this statement is false.
+
+4. **Option (C): The spheres will experience an electrostatic attraction.**
+
+   Since one sphere has a positive charge and the",C,(C),1
+5,"Suppose that for some $a,b,c$ we have $a+b+c = 6$, $ab+ac+bc = 5$ and $abc = -12$. What is $a^3+b^3+c^3$?
+(A) 90
+(B) 99
+(C) 64
+(D) 91
+Let's think step by step.","To find \( a^3 + b^3 + c^3 \), we can use the identity for the sum of cubes:
+
+\[
+a^3 + b^3 + c^3 - 3abc = (a+b+c)(a^2 + b^2 + c^2 - ab - ac - bc)
+\]
+
+First, let's find \( a^2 + b^2 + c^2 \). We can use the square of the sum formula:
+
+\[
+(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + ac + bc)
+\]
+
+Given:
+\[
+a + b + c = 6
+\]
+\[
+ab + ac + bc = 5
+\]
+
+Substitute these values into the equation:
+
+\[
+6^2 = a^2 + b^2 + c^2 + 2 \cdot 5
+\]
+
+Simplify:
+
+\[
+36 = a^2 + b^2 + c^2 + 10
+\]
+
+Solving for \( a^2 + b^2 + c^2 \):
+
+\[
+a^2 + b^2 + c^2 = 36 - ",C,(A),0
+6,"_______ and _______ are both examples of _______ -based theories which are based on basic universal principles of right and wrong.
+(A) Ethics of duty, Ethics of rights and justice, Principle
+(B) Utilitarianism, Egoism, Principle
+(C) Ethics of duty, Utilitarianism, Consequentialist
+(D) Egoism, Ethics of rights and justice, Consequentialist
+Let's think step by step.","To solve this problem, let's break down the options provided:
+
+1. **Identify the type of theories:**
+   - The question mentions ""Ethics of duty"" and ""Ethics of rights and justice,"" which are both examples of ethical theories.
+   
+2. **Understand the basis of these theories:**
+   - These theories are based on principles of right and wrong, indicating they are not consequentialist (which focuses on outcomes), but rather deontological or virtue-based.
+
+3. **Analyze each option:**
+
+- **Option A:** ""Ethics of duty, Ethics of rights and justice, Principle""
+  - This suggests that both ethics of duty and ethics of rights and justice are based on principles.
+  - Both ethical theories (duty and rights/justice) can be seen as principle-based.
+
+- **Option B:** ""Utilitarianism, Egoism, Principle""
+  - Utilitarianism is a consequentialist theory focused on the greatest good for the greatest number.
+  - Egoism focuses on self-interest, which is not based on principles of right and wrong in the same sense.
+  - This option does not fit well because it includes theories that are not principle-based.
+
+- **Option C:** ""Ethics of duty",A,(A),1
+7,"Which of the following changes to a circuit will always bring about an increase in the current?
+(A) Increased voltage and increased resistance
+(B) Decreased voltage and decreased resistance
+(C) Increased voltage and decreased resistance
+(D) Decreased voltage and increased resistance
+Let's think step by step.","To determine which change to a circuit will always bring about an increase in the current, we can use Ohm's Law, which states:
+
+\[ V = I \cdot R \]
+
+where:
+- \( V \) is the voltage,
+- \( I \) is the current, and
+- \( R \) is the resistance.
+
+We need to analyze each option step by step:
+
+### Option (A): Increased Voltage and Increased Resistance
+
+If both voltage (\(V\)) and resistance (\(R\)) increase:
+\[ V_{new} = V_{old} + \Delta V \]
+\[ R_{new} = R_{old} + \Delta R \]
+
+Using Ohm's Law, the new current \( I_{new} \) can be expressed as:
+
+\[ I_{new} = \frac{V_{new}}{R_{new}} = \frac{(V_{old} + \Delta V)}{(R_{old} + \Delta R)} \]
+
+Whether this expression results in an increase or decrease of current depends on the relative magnitudes of \( \Delta V \) and \( \Delta R \). Therefore, we cannot definitively say that increasing both voltage and resistance will always result in an increased current.
+
+### Option",A,(A),1

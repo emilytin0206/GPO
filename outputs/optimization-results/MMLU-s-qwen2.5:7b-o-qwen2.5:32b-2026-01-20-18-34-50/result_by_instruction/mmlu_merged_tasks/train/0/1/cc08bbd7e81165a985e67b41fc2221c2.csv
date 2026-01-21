@@ -1,0 +1,172 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+8,"In a business to business context, conflicts of interest can arise in two main ways: conflict of _______ and _______ interests, which might arise, for example, when a firm is hired as a supplier of professional services by another firm or conflict of _________ and ________ interests, such as where an individual's interests may conflict with that of their employer.
+(A) Professional, Organizational, Personal, Organizational
+(B) Professional, Individual, Personal, Organizational
+(C) Individual, Organizational, Organizational, Professional
+(D) Individual, Professional, Organizational, Personal
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","In a business-to-business context, conflicts of interest can arise in two main ways: conflict of professional interests and organizational interests, which might arise, for example, when a firm is hired as a supplier of professional services by another firm or conflict of personal interests and organizational interests, such as where an individual's interests may conflict with that of their employer.
+
+Given the options provided:
+
+(A) Professional, Organizational, Personal, Organizational
+(B) Professional, Individual, Personal, Organizational
+(C) Individual, Organizational, Organizational, Professional
+(D) Individual, Professional, Organizational, Personal
+
+The correct answer is (B) Professional, Individual, Personal, Organizational.
+
+Here's the reasoning:
+
+1. **Conflict of professional interests and organizational interests**: This refers to situations where a firm hired as a supplier of professional services by another firm might have conflicts that arise from their professional duties versus their organizational goals or obligations.
+2. **Conflict of personal interests and organizational interests**: This pertains to scenarios where an individual's personal interests may conflict with the broader organizational interests they represent.
+
+Thus, the correct sequence is:
+
+- Conflict of professional interests
+- And organizational interests (first instance)
+- Conflict of personal interests
+- And organizational interests (second instance)
+
+Therefore, the",B,(A),0
+9,"The charge on an oil drop is measured in the laboratory. Which of the following measurements should be rejected as highly unlikely to be correct?
+(A) 6.4 × 10^-19 C
+(B) 8.0 × 10^-19 C
+(C) 4.8 × 10^-19 C
+(D) 2.4 × 10^-19 C
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To determine which measurement of the charge on an oil drop should be rejected as highly unlikely to be correct, we need to understand the nature of the charges involved.
+
+In physics, particularly in the context of the Millikan Oil Drop Experiment, it was discovered that the elementary charge \( e \) (the charge of a single electron or proton) is approximately \( 1.602 \times 10^{-19} \) C. Charges observed in nature are integer multiples of this fundamental unit.
+
+Let's examine each option to see if they can be expressed as an integer multiple of the elementary charge:
+
+(A) \( 6.4 \times 10^{-19} \, \text{C} \)
+\[ \frac{6.4 \times 10^{-19}}{1.602 \times 10^{-19}} \approx 4 \]
+This is an integer multiple of the elementary charge.
+
+(B) \( 8.0 \times 10^{-19} \, \text{C} \)
+\[ \frac{8.0 \times 10^{-19}}{1.602 \times 10^{-19}} \approx 5 \",B,(D),0
+10,"A man stands with his hands to his sides on a frictionless platform that is rotating. Which of the following could change the angular momentum of the man-platform system?
+(A) The man catches a baseball thrown to him by a friend.
+(B) The man thrusts his arms out away from his body
+(C) The man thrusts his arms out away from his body, and then quickly brings his arms back to his side again.
+(D) The man jumps straight up in the air and lands back on the platform.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To determine which actions could change the angular momentum of the man-platform system, we need to consider the principle of conservation of angular momentum. According to this principle, if no external torque acts on a system, its total angular momentum remains constant.
+
+Let's analyze each option:
+
+(A) **The man catches a baseball thrown to him by a friend.**
+- When the man catches the ball, he exerts a force on it, and in return, the ball exerts an equal and opposite force on him (Newton’s Third Law). This interaction results in a change in his angular momentum because the ball has its own angular momentum that is transferred to the man. Therefore, this action can change the angular momentum of the system.
+
+(B) **The man thrusts his arms out away from his body.**
+- When the man extends his arms, he increases his moment of inertia (the product of mass and the square of the distance from the axis of rotation). Since angular momentum \(L\) is given by \(L = I\omega\) (where \(I\) is the moment of inertia and \(\omega\) is the angular velocity), if no external torque acts, increasing \(I\) will decrease \(\omega\) to keep \(L\) constant. Thus, this action does",A,(A),1
+11,"Healthy eating, particularly relating to sugar and salt consumption, food and packaging waste and supply chain CO2 emissions are all business ethics issues facing the ________.
+(A) Supermarket industry
+(B) Chemicals industry
+(C) Construction industry
+(D) Information and mobile technology industry
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To determine which industry faces the business ethics issues of healthy eating, particularly relating to sugar and salt consumption, food and packaging waste, and supply chain CO2 emissions, let's analyze each option:
+
+(A) Supermarket Industry:
+- Supermarkets are directly involved in selling a wide variety of foods, including those high in sugar and salt.
+- They have significant control over the types of products they stock and can influence consumer choices through marketing and product placement.
+- Supermarkets generate substantial packaging waste from their operations.
+- The supply chain for food items involves transportation and storage, which contribute to CO2 emissions.
+
+(B) Chemicals Industry:
+- While this industry deals with chemicals used in various applications, it is not primarily focused on selling foods or managing the health impacts of sugar and salt consumption.
+- Packaging waste might be an issue, but it is less central compared to supermarkets.
+- The primary focus here would be more on safety, regulatory compliance, and environmental impact of chemical products rather than food-related issues.
+
+(C) Construction Industry:
+- This industry deals with building structures and infrastructure. While there can be some indirect impacts related to materials used in construction (e.g., energy efficiency), it is not directly involved in the production or sale of foods.
+- The focus here would be more on",A,(A),1
+12,"A box contains 4 white balls and 4 black balls. I draw them out of the box, one at a time. What is the probability that all of my draws alternate colors?
+(A) \frac{1}{8}
+(B) \frac{1}{7}
+(C) \frac{1}{40}
+(D) \frac{1}{35}
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To determine the probability that all draws alternate colors when drawing 8 balls (4 white and 4 black) out of a box one at a time, we need to consider both the total number of ways to draw the balls and the number of favorable outcomes where the colors alternate.
+
+### Step-by-Step Solution:
+
+1. **Total Number of Ways to Draw the Balls:**
+   The total number of ways to arrange 4 white (W) and 4 black (B) balls in a sequence is given by the binomial coefficient:
+   \[
+   \binom{8}{4} = \frac{8!}{4!4!} = 70
+   \]
+   This represents all possible sequences of drawing 8 balls.
+
+2. **Favorable Outcomes:**
+   For the draws to alternate colors, we need either a sequence starting with W and then B, or a sequence starting with B and then W.
+   
+   - If the first ball is white (W), the sequence must be WBWBWBWB.
+   - If the first ball is black (B), the sequence must be BWBWBW.
+
+3. **Counting Favorable Sequences:**
+   There are exactly 2 favorable sequences:
+   - WB",B,(D),0
+13,"If there is a 70% chance that it will rain on a given day, what is the percent chance that it will NOT rain on that same day?
+(A) 0%
+(B) 30%
+(C) 50%
+(D) 70%
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To determine the percent chance that it will not rain on a given day when there is a 70% chance of rain, we can use basic probability principles.
+
+1. **Understanding Probability**: The total probability of all possible outcomes must sum to 100%. In this case, the two possible outcomes are ""it rains"" and ""it does not rain.""
+
+2. **Given Information**: We know that there is a 70% chance it will rain on a given day.
+
+3. **Calculating the Complement**: The probability of an event not occurring (in this case, it not raining) can be found by subtracting the probability of the event occurring from 100%. Mathematically, if \( P(\text{Rain}) = 70\% \), then:
+   \[
+   P(\text{No Rain}) = 100\% - P(\text{Rain})
+   \]
+   Substituting the given value:
+   \[
+   P(\text{No Rain}) = 100\% - 70\%
+   \]
+
+4. **Performing the Calculation**:
+   \[
+   P(\text{No Rain}) = 30\%
+   \]
+
+",A,(B),0
+14,"Traveling at an initial speed of 1.5 × 10^6 m/s, a proton enters a region of constant magnetic field of magnitude 1.5 T. If the proton's initial velocity vector makes an angle of 30° with the magnetic field, compute the proton's speed 4 s after entering the magnetic field.
+(A) 5.0 × 10^6 m/s
+(B) 7.5 × 10^6 m/s
+(C) 1.5 × 10^6 m/s
+(D) 3.0 × 10^6 m/s
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To solve this problem, we need to understand the behavior of a charged particle (in this case, a proton) moving through a magnetic field. The key point is that the speed of the proton will not change due to the magnetic force because the magnetic force acts perpendicular to both the velocity and the magnetic field, thus only changing the direction of the velocity vector but not its magnitude.
+
+Given:
+- Initial speed \( v_0 = 1.5 \times 10^6 \) m/s
+- Magnetic field strength \( B = 1.5 \) T
+- Angle between initial velocity and magnetic field \( \theta = 30^\circ \)
+
+Since the magnetic force is always perpendicular to the velocity, it does not affect the speed of the proton. Therefore, the speed remains constant throughout its motion in the magnetic field.
+
+Thus, the speed of the proton 4 seconds after entering the magnetic field will still be:
+\[ v = 1.5 \times 10^6 \text{ m/s} \]
+
+Therefore, the correct answer is (C) \( 1.5 \times 10^6 \) m/s.
+
+This result can be summarized as follows:
+
+- The speed of a charged particle in a magnetic",C,(C),1
+15,"Where, in the first quadrant, does the rose r = sin 3θ have a vertical tangent?
+(A) nowhere
+(B) θ = 0.39
+(C) θ=  0.47
+(D) θ = 0.52
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions or laws; for historical or textual analysis, pinpoint significant themes or supporting details; and for definitions in social sciences, clarify concepts and their distinctions from related ideas.","To determine where the rose curve \( r = \sin 3\theta \) has a vertical tangent in the first quadrant, we need to analyze its derivative with respect to \(\theta\). A vertical tangent occurs when the slope of the tangent line is undefined, which corresponds to the derivative \(\frac{dx}{dy}\) being infinite. For polar coordinates, this can be found by calculating \(\frac{dr/d\theta}{r} = 0\) or analyzing where \( \frac{dy}{dx} \) becomes undefined.
+
+First, we convert the polar equation to Cartesian coordinates using:
+\[ x = r \cos \theta \]
+\[ y = r \sin \theta \]
+
+Given \( r = \sin 3\theta \), we have:
+\[ x = \sin 3\theta \cos \theta \]
+\[ y = \sin 3\theta \sin \theta \]
+
+To find the slope of the tangent line, we need to compute \(\frac{dx}{d\theta}\) and \(\frac{dy}{d\theta}\):
+\[ \frac{dx}{d\theta} = \frac{d}{d\theta} (\sin 3\theta \cos \theta)",D,(C),0

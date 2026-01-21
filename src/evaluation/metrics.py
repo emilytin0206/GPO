@@ -1,10 +1,4 @@
-"""Final answer parser for reasoning tasks.
-
-The common forms of outputs to be parsed are like:
-- "the answer: XXX"
-- "XXX is the answer"
-- "XXX is the final/right/correct answer"
-"""
+"""Final answer parser for reasoning tasks."""
 
 import dataclasses
 import re
@@ -13,39 +7,79 @@ from typing import Dict, List, Sequence
 from rouge import Rouge
 import pdb
 
+# ======================================================
+# [NEW] Engineering Extraction Logic (您的新引擎)
+# ======================================================
+
+def to_float_maybe(s: str) -> float:
+    """Try to convert string to float, handling commas."""
+    if not s: 
+        raise ValueError
+    # 移除非數字字符，但保留 . 和 -
+    matches = re.findall(r'-?\d+\.?\d*', s.replace(',', ''))
+    if matches: 
+        return float(matches[-1])
+    raise ValueError
+
+def extract_choice(s: str) -> str:
+    """
+    Robust extraction of multiple-choice answers (A/B/C/D/E).
+    """
+    if not s: 
+        raise ValueError("Empty input string")
+    
+    # 1. 預處理
+    text = s.strip()
+
+    # 2. [最強優先級] LaTeX Boxed 格式: \boxed{A}
+    match_boxed = re.search(r'\\boxed\{\s*([A-E])\s*\}', text, re.IGNORECASE)
+    if match_boxed:
+        return match_boxed.group(1).upper()
+
+    # 3. [關鍵邏輯] 標準化與切割 (定位結論區)
+    text_lower = text.lower()
+    keywords = ['answer is', 'answer:', 'the answer is', 'correct answer is', 'option:', 'choice:']
+    
+    found_keyword = False
+    for pat in keywords:
+        if pat in text_lower:
+            # 使用 rsplit 確保我們抓的是最後一次出現的關鍵字
+            text_lower = text_lower.rsplit(pat, 1)[-1].strip()
+            found_keyword = True 
+            break
+            
+    # 4. [提取選項] 根據是否鎖定結論區，決定抓頭還是抓尾
+    
+    # 4.1 尋找括號格式: (A), (B)
+    matches_paren = re.findall(r'\(([A-E])\)', text_lower, re.IGNORECASE)
+    if matches_paren:
+        # 如果有鎖定結論區 -> 答案通常在開頭 -> 取第一個
+        # 如果沒鎖定 (全文) -> 答案通常在結尾 -> 取最後一個
+        return matches_paren[0].upper() if found_keyword else matches_paren[-1].upper()
+        
+    # 4.2 尋找單獨字母: A, B (需有邊界 \b)
+    matches_word = re.findall(r'\b([A-E])\b', text_lower, re.IGNORECASE)
+    if matches_word:
+        return matches_word[0].upper() if found_keyword else matches_word[-1].upper()
+
+    # 5. [保底策略] 極簡字串處理 (針對直接輸出 "A." 的情況)
+    if len(s.strip()) < 10:
+        match_simple = re.search(r'([A-E])', s, re.IGNORECASE)
+        if match_simple:
+            return match_simple.group(1).upper()
+
+    # 若真的什麼都沒抓到
+    raise ValueError(f"No choice found in: {s}")
+
+# ======================================================
+# Existing GPO Helpers
+# ======================================================
+
 word2num = {
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9",
-    "ten": "10",
-    "eleven": "11",
-    "twelve": "12"
+    "one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
+    "six": "6", "seven": "7", "eight": "8", "nine": "9", "ten": "10",
+    "eleven": "11", "twelve": "12"
 }
-
-all_lowercase_letters = string.ascii_lowercase  # "abcd...xyz"
-all_uppercase_letters = string.ascii_uppercase
-bracketed_letters_list = set([f"({l})" for l in (all_lowercase_letters + all_uppercase_letters)])  # ['(a)', ...]
-
-SPECIAL_NUM_CHARS = frozenset({".", "/", ","})
-# The logic for identifying patterns for the answer behind:
-# First check if the primary patterns are in the string, then if not, check the
-# secondary ones.
-FINAL_ANSWER_BEHIND_PATTERNS_PRIMARY = ["answer is ", "answer: ", "answer is: "]
-FINAL_ANSWER_BEHIND_PATTERNS_SECONDARY = ["is: ", "are: "]
-FINAL_ANSWER_AHEAD_PATTERNS = [
-    " is the correct answer",
-    " is the right answer",
-    " is the final answer",
-    " is the answer",
-]
-GSM8K_ANSWER = "#### "
-# the Boolean symbols appeared in BBH tasks
 BOOLEAN_SYMBOLS = [["false", "true"], ["no", "yes"], ["invalid", "valid"]]
 
 def calc_rouge(pred, ans):
@@ -54,39 +88,16 @@ def calc_rouge(pred, ans):
         scores = rouge.get_scores(pred, ans)[0]['rouge-l']['f']
     elif isinstance(ans, list):
         scores_list = [rouge.get_scores(pred, a)[0]['rouge-l']['f'] for a in ans]
-        # pdb.set_trace()
         scores = sum(scores_list) / len(scores_list)
     return scores
-
-def _is_float(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
-
 
 def remove_punctuation_from_string(input_string):
     output_string = input_string.translate(str.maketrans("", "", string.punctuation))
     return output_string
 
-
-def _extract_bracketed_choice_from_string(prediction, is_lower=True):
-    """Extract bracketed ABCD...XYZ choices there's exactly one bracketed choice.
-
-    Args:
-      prediction (str): the unprocessed prediction.
-
-    Returns:
-      prediction (str): the processed prediction.
-    """
-    if is_lower:
-        prediction = prediction.lower()
-    choice_in_pred_all = set([item in prediction for item in bracketed_letters_list])
-    if sum(choice_in_pred_all) >= 1:
-        prediction = re.findall(r"\([A-Za-z]\)", prediction)[0]
-    return prediction
-
+# ======================================================
+# Main Parsing Function (已修正：呼叫 extract_choice)
+# ======================================================
 
 def get_normalized_prediction(
     prediction: str,
@@ -95,207 +106,86 @@ def get_normalized_prediction(
     num_decimals: int = 0,
     treat_as_bool: bool = False,
 ) -> str:
-    """Returns a normalized prediction for use in `number_included_accuracy`.
-
-    Args:
-      prediction: The original model prediction.
-      treat_as_number: Whether to treat the prediction as a number (and perform
-        additional post-processing relevant to numbers, such as stripping of units
-        or normalization of thousand separators, etc.).
-      num_decimals: Number of decimal places to which to round the answer. Only
-        applicable when treat_as_number==True.
-      treat_as_bool: Whether to treat the prediction as a Boolean object. Only set
-        it to True when the target is Boolean. The parser will then convert an 0/1
-        answer to False/True.
-
-    Returns:
-      A normalized answer string that can be directly compared with the normalized
-      golden answer in order to determine the `number_included_accuracy`.
     """
-
-    prediction_parsed = prediction.lower().strip()
+    Returns a normalized prediction using robust extraction logic.
+    """
+    prediction = prediction.strip()
     
-    FINAL_ANSWER_BEHIND_PATTERNS = ( 
-        FINAL_ANSWER_BEHIND_PATTERNS_PRIMARY 
-        if any([item in prediction for item in FINAL_ANSWER_BEHIND_PATTERNS_PRIMARY])
-        else FINAL_ANSWER_BEHIND_PATTERNS_SECONDARY
-    )
-    
-    DELIMITERS_FOR_ANSWER_BEHIND = (
-        [GSM8K_ANSWER]
-        + FINAL_ANSWER_BEHIND_PATTERNS
-    )
-    DELIMITERS_FOR_ANSWER_AHEAD = (
-        FINAL_ANSWER_AHEAD_PATTERNS 
-    )
-    
-    answer_indicated = False
-    for answer_delimiter in DELIMITERS_FOR_ANSWER_BEHIND:
-        if answer_delimiter.lower() in prediction_parsed:
-            prediction_parsed = prediction_parsed.split(answer_delimiter.lower())[-1]
-            answer_indicated = True
-
-    for answer_delimiter in DELIMITERS_FOR_ANSWER_AHEAD:
-        if answer_delimiter.lower() in prediction_parsed:
-            prediction_parsed = prediction_parsed.split(answer_delimiter.lower())[0]
-            answer_indicated = True
-
-    # extract the bracketed choices: "(A) apple" -> "(a)"
+    # 1. [修正點] 處理選擇題 -> 強制使用 extract_choice
     if is_multiple_choice:
-        prediction_parsed = _extract_bracketed_choice_from_string(prediction_parsed)
+        try:
+            return extract_choice(prediction)
+        except ValueError:
+            # 如果抓不到，回傳空字串，避免舊邏輯誤判
+            return ""
 
-    def _parse_without_treating_as_number(prediction_parsed):
-        prediction_parsed = prediction_parsed.split(".")[0]
-        return prediction_parsed
-        
-    def _parse_with_treating_as_number(prediction_parsed):
-        
-        prediction_parsed_list = prediction_parsed.split(' ')
-        new_prediction_parsed = []
-        for pred_parsed_word in prediction_parsed_list:
-            if pred_parsed_word in word2num:
-                new_prediction_parsed.append(word2num[pred_parsed_word])
-            else:
-                new_prediction_parsed.append(pred_parsed_word)
-        
-        prediction_parsed = ' '.join(new_prediction_parsed)
-        
-        prediction_parsed = prediction_parsed.split("=")[-1]
-        for c in ["$", ",", "%", "€", "£", ":"]:
-            prediction_parsed = prediction_parsed.replace(c, "")
-        prediction_parsed = prediction_parsed.strip()
-        corrected_answer = False
-
-        if not corrected_answer:  # If no calculator errors were made.
-            # '5600 pounds' -> '5600'; 'the 6th' -> '6'.
-            if answer_indicated:
-                # Take the first token that has numerical values.
-                parts = prediction_parsed.split(" ")
-            else:
-                # Take the last token that has numerical values.
-                parts = list(reversed(prediction_parsed.split(" ")))
-
-            prediction_parsed = parts[0]  # Default
-            for part in parts:
-                if any(chr.isdigit() for chr in part):  # Filter out any digit tokens.
-                    prediction_parsed = part
-                    break
-
-            # '156kgs' -> 156. '823-yard' -> 823.
-            while prediction_parsed and prediction_parsed[-1].isalpha():
-                prediction_parsed = prediction_parsed[:-1]
-            if prediction_parsed and prediction_parsed[-1] == "-":
-                prediction_parsed = prediction_parsed[:-1]
-
-        if _is_float(prediction_parsed):
-            prediction_parsed_float = round(float(prediction_parsed), num_decimals)
-            prediction_parsed = "{:.{num_decimals}f}".format(
-                prediction_parsed_float, num_decimals=num_decimals
-            )
-        else:
-            if re.search(r"(\d+)(?!.*\d)", prediction_parsed):
-                prediction_parsed = re.search(r"(\d+)(?!.*\d)", prediction_parsed)[0]
-        return prediction_parsed
-    
+    # 2. [修正點] 處理數字 -> 強制使用 to_float_maybe
     if treat_as_number:
-        prediction_parsed = _parse_with_treating_as_number(prediction_parsed)
+        try:
+            val = to_float_maybe(prediction)
+            # 格式化小數位數
+            if num_decimals > 0:
+                return "{:.{prec}f}".format(val, prec=num_decimals)
+            else:
+                # 如果是整數，去掉 .0
+                if val.is_integer():
+                    return str(int(val))
+                return str(val)
+        except ValueError:
+            # 抓不到數字就回傳原始字串
+            pass
 
-
+    # 3. 處理布林值 (Boolean) -> 維持原有邏輯
     if treat_as_bool:
-        prediction_parsed_as_not_number = _parse_without_treating_as_number(
-            prediction_parsed
-        )
-        prediction_parsed_as_not_number = prediction_parsed_as_not_number.split(' ')
-        if any(
-            [prediction_parsed_as_not_number in item for item in BOOLEAN_SYMBOLS]
-        ):
-            prediction_parsed = prediction_parsed_as_not_number
-        # remove punctuations like ":" and then strip
-        prediction_parsed = remove_punctuation_from_string(prediction_parsed).strip()
+        prediction_lower = prediction.lower()
+        for idx, pair in enumerate(BOOLEAN_SYMBOLS):
+            if pair[0] in prediction_lower: return "false" 
+            if pair[1] in prediction_lower: return "true"
+        prediction_parsed = remove_punctuation_from_string(prediction).lower().strip()
+        return prediction_parsed
 
-    return prediction_parsed
+    # 4. 預設處理 (文字)
+    prediction_parsed = prediction.lower()
+    keywords = ["answer is", "answer:", "is:"]
+    for k in keywords:
+        if k in prediction_parsed:
+            prediction_parsed = prediction_parsed.split(k)[-1]
+    
+    return prediction_parsed.strip()
 
 
 @dataclasses.dataclass
 class NormalizationResult:
-    """Bundle of return values of get_normalized_target_and_prediction.
-
-    Attributes:
-      target: Normalized target string, suitable for direct comparison with the
-        normalized prediction.
-      prediction: Normalized prediction string, suitable for direct comparison
-        with the normalized target.
-      treat_as_number: Whether it was determined to treat the prediction as a
-        number (and perform additional post-processing relevant to numbers, such
-        as stripping of units or normalization of thousand separators, etc.).
-      num_decimals: Number of decimal places to which it was determined to round
-        the answer. Only relevant when treat_as_number==True.
-    """
-
     target: str
     prediction: str
     treat_as_number: bool
     num_decimals: int
 
-
 def get_normalized_target_and_prediction(
     target: str, prediction: str
 ) -> NormalizationResult:
-    """Returns a normalized target and prediction for `number_included_accuracy`.
+    # Target 處理
+    target = target.lower().strip()
+    if "answer is" in target:
+        target = target.split("answer is")[-1].strip()
+    
+    treat_as_number = False
+    try:
+        float(target)
+        treat_as_number = True
+    except:
+        pass
 
-    Args:
-      target: Target (i.e., golden answer). The function will automatically
-        perform light normalization on the target, such as stripping off any
-        answer indication prefixes like "The answer is".
-      prediction: Original model prediction. The function will automatically
-        normalize the prediction by stripping off trailing punctuation and any
-        answer indication prefixes like "The answer is". If the target is numeric,
-        will further strip units and round to the same precision as the target.
-
-    Returns:
-      The normalized target and prediction, along with related information
-      indicating the types of normalization that were performed.
-    """
-
-    def _any_list_item_in_string(test_list, test_string):
-        return any(item in test_string for item in test_list)
-
-    primary_after_patterns_in_target = _any_list_item_in_string(
-        FINAL_ANSWER_BEHIND_PATTERNS_PRIMARY, target
-    )
-    secondary_after_patterns_in_target = _any_list_item_in_string(
-        FINAL_ANSWER_BEHIND_PATTERNS_SECONDARY, target
-    )
-    target = target.lower()
-    if (
-        primary_after_patterns_in_target
-        or (secondary_after_patterns_in_target and not primary_after_patterns_in_target)
-        or _any_list_item_in_string(FINAL_ANSWER_AHEAD_PATTERNS, target)
-        or GSM8K_ANSWER in target
-    ):
-        if primary_after_patterns_in_target:
-            target = re.split(r"|".join(FINAL_ANSWER_BEHIND_PATTERNS_PRIMARY), target)[
-                -1
-            ]
-        elif (
-            secondary_after_patterns_in_target and not primary_after_patterns_in_target
-        ):
-            target = re.split(
-                r"|".join(FINAL_ANSWER_BEHIND_PATTERNS_SECONDARY), target
-            )[-1]
-        target = re.split(r"|".join(FINAL_ANSWER_AHEAD_PATTERNS), target)[0]
-        target = target.split(GSM8K_ANSWER)[-1]
-        if target and target[-1] in [";", ",", "."] and _is_float(target[:-1]):
-            target = target[:-1]
-
-    treat_as_number = _is_float(target)
+    num_decimals = 0
     if treat_as_number and "." in target:
         num_decimals = len(target.split(".")[-1])
-    else:
-        num_decimals = 0
 
+    # 這裡呼叫修正後的 get_normalized_prediction
     normalized_prediction = get_normalized_prediction(
-        prediction, treat_as_number=treat_as_number, num_decimals=num_decimals
+        prediction, 
+        is_multiple_choice=False, 
+        treat_as_number=treat_as_number, 
+        num_decimals=num_decimals
     )
 
     return NormalizationResult(
@@ -305,66 +195,31 @@ def get_normalized_target_and_prediction(
         num_decimals=num_decimals,
     )
 
-
 def number_included_accuracy_list(
     targets: Sequence[str],
     predictions: Sequence[str],
 ) -> List[bool]:
-    """Returns a list of booleans for if the target is anywhere in the prediction.
-
-    Args:
-      targets: Targets (i.e., golden answers).
-      predictions: Original model predictions (before normalization).
-    """
-
     correct_list = []
     for prediction, target in zip(predictions, targets):
-        normalization_result = get_normalized_target_and_prediction(
-            target=target, prediction=prediction
-        )
-
-        # If answer is not a number, then look for exact match.
-        if not normalization_result.treat_as_number:
-            correct_list.append(
-                normalization_result.target == normalization_result.prediction
-            )
-
-        else:  # If the target is a number, then compare numerically.
-            correct = False  # pylint: disable=unused-variable
+        res = get_normalized_target_and_prediction(target, prediction)
+        if res.treat_as_number:
             try:
-                prediction_parsed_float = round(
-                    float(normalization_result.prediction),
-                    normalization_result.num_decimals,
-                )
-                correct = (
-                    abs(prediction_parsed_float - float(normalization_result.target))
-                    <= 1e-5
-                )
-            except ValueError:
+                correct = abs(float(res.prediction) - float(res.target)) <= 1e-5
+            except:
                 correct = False
-            except IndexError:
-                correct = False
-            correct_list.append(correct)
+        else:
+            correct = res.target == res.prediction
+        correct_list.append(correct)
     return correct_list
-
 
 def number_included_accuracy(
     targets: Sequence[str], predictions: Sequence[str]
 ) -> Dict[str, float]:
-    """Special accuracy for if the target is anywhere in the prediction."""
-
-    correct_list = number_included_accuracy_list(targets, predictions)
-
-    correct_list_with_calc = number_included_accuracy_list(targets, predictions)
-
-    return {
-        "accuracy": sum(correct_list) / len(correct_list) * 100,
-        "accuracy_with_calc": sum(correct_list_with_calc)
-        / len(correct_list_with_calc)
-        * 100,
-    }
-
+    lst = number_included_accuracy_list(targets, predictions)
+    acc = sum(lst) / len(lst) * 100 if lst else 0.0
+    return {"accuracy": acc, "accuracy_with_calc": acc}
 
 if __name__ == "__main__":
-    ans = get_normalized_prediction(prediction="  Sure! Faye has 66 pencils in total.", is_multiple_choice=False, treat_as_number=True, num_decimals=0, treat_as_bool=False)
-    print(ans)
+    # 測試用
+    ans = get_normalized_prediction(prediction="Based on the above, the answer is (C).", is_multiple_choice=True, treat_as_number=False)
+    print(f"Test Result: {ans}") # 預期輸出: C

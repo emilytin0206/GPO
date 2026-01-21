@@ -35,7 +35,8 @@ OPT_BATCH_SIZE=8
 FORMAT_DATA_NUM=3
 
 # --- 動量與梯度設定 (Momentum & Gradient) ---
-GRADIENT_NAME="-" # 設為 "-" 代表不使用顯式梯度文字，或依程式邏輯調整
+# GRADIENT_NAME="-" # 設為 "-" 代表不使用顯式梯度文字，或依程式邏輯調整
+GRADIENT_NAME="feedback" 
 MOMENTUM_PARA_NAME="para"
 MOMENTUM_SELECTION_NAME="relavance"
 MOMENTUM_SELECTION_NUM=3
@@ -43,7 +44,8 @@ MOMENTUM_UPDATE_NAME="k-list"
 
 # --- 學習率與步長 (Learning Rate & Step Size) ---
 LEARNING_RATE_NAME="w_lr"
-UTIL_GRADIENT_NAME="generate_without"
+UTIL_GRADIENT_NAME="generate"
+# UTIL_GRADIENT_NAME="generate_without"
 INITIAL_STEP_SIZE=50
 DECAY_STRATEGY="consine"
 USE_WARMUP_STRATEGY=false

@@ -1,0 +1,193 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+32,"Anton has two species of ants, Species A and Species B, in his ant farm. The two species are identical in appearance, but Anton knows that every day, there are twice as many ants of Species A than before, while there are three times as many ants of Species B. On Day 0, Anton counts that there are 30 ants in his ant farm. On Day 5, Anton counts that there are 3281 ants in his ant farm. How many of these are of Species A?
+(A) 211
+(B) 2321
+(C) 11
+(D) 608
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To solve this problem, we need to set up equations based on the given information about how the number of ants of each species changes over time.
+
+Let's denote:
+- \( A_0 \) as the initial number of Species A ants.
+- \( B_0 \) as the initial number of Species B ants.
+
+From the problem statement, we know that:
+1. On Day 0, there are a total of 30 ants: 
+\[ A_0 + B_0 = 30 \]
+
+2. Each day, the number of Species A ants doubles, and the number of Species B ants triples.
+3. On Day 5, the total number of ants is 3281.
+
+We can express the number of ants on Day 5 as:
+\[ A_5 = 2^5 \cdot A_0 = 32A_0 \]
+\[ B_5 = 3^5 \cdot B_0 = 243B_0 \]
+
+The total number of ants on Day 5 is given by:
+\[ A_5 + B_5 = 3281 \]
+Substituting the expressions for \( A_5 \) and \( B_5 \):
+\[",B,(D),0
+33,"A car moving with speed v reaches the foot of an incline of angle θ. The car coasts up the incline without using the engine. Neglecting friction and air resistance, which of the following is correct about the magnitude of the car’s horizontal acceleration ax and vertical acceleration ay?
+(A) ax = 0; ay < g
+(B) ax = 0; ay = g
+(C) ax < g; ay < g
+(D) ax < g; ay = g
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To solve this problem, we need to analyze the motion of the car as it coasts up an incline without using the engine, neglecting friction and air resistance.
+
+1. **Identify the forces acting on the car:**
+   - The gravitational force \( \vec{F}_g = m \vec{g} \), where \( \vec{g} \) is the acceleration due to gravity.
+   - Since we are neglecting friction and air resistance, there are no other horizontal or vertical forces acting on the car.
+
+2. **Resolve the gravitational force into components:**
+   - The component of the gravitational force parallel to the incline (downhill direction) is \( F_{g\parallel} = mg \sin(\theta) \).
+   - The component of the gravitational force perpendicular to the incline (normal force direction) is \( F_{g\perp} = mg \cos(\theta) \).
+
+3. **Analyze the motion along the incline:**
+   - Since there are no forces acting parallel to the incline other than gravity, and we assume the car is coasting up without using the engine, the only force affecting its motion in this direction is \( F_{g\parallel} = mg \sin",,(C),0
+34,"A liquid flows at a constant flow rate through a pipe with circular cross-sections of varying diameters. At one point in the pipe, the diameter is 2 cm and the flow speed is 18 m/s. What is the flow speed at another point in this pipe, where the diameter is 3 cm?
+(A) 4 m/s
+(B) 6 m/s
+(C) 8 m/s
+(D) 12 m/s
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To solve this problem, we can use the principle of continuity, which states that the volume flow rate of an incompressible fluid (like water) remains constant throughout a pipe with varying cross-sectional areas. Mathematically, it is expressed as:
+
+\[ A_1 v_1 = A_2 v_2 \]
+
+where:
+- \( A_1 \) and \( A_2 \) are the cross-sectional areas at two different points in the pipe,
+- \( v_1 \) and \( v_2 \) are the flow speeds at those same points.
+
+First, we need to find the cross-sectional areas of the pipe at both points. The area \( A \) of a circle is given by:
+
+\[ A = \pi r^2 \]
+
+where \( r \) is the radius of the circle. 
+
+For the first point:
+- Diameter = 2 cm
+- Radius, \( r_1 = \frac{2}{2} = 1 \) cm = 0.01 m
+
+The cross-sectional area at this point is:
+
+\[ A_1 = \pi (0.01)^2 = \pi \times 0.0001 = 0.0001\",A,(C),0
+35,"Evaluate $\log_3 81$.
+(A) 4
+(B) 0.25
+(C) -1
+(D) 27
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To evaluate \(\log_3 81\), we need to determine the power to which the base 3 must be raised to obtain 81. In other words, we are looking for a number \(x\) such that:
+
+\[3^x = 81\]
+
+We know that 81 can be expressed as a power of 3. Specifically,
+
+\[81 = 3 \times 3 \times 3 \times 3 = 3^4\]
+
+So, we have:
+
+\[3^x = 3^4\]
+
+Since the bases are the same, we can equate the exponents:
+
+\[x = 4\]
+
+Therefore,
+
+\[\log_3 81 = 4\]
+
+The correct answer is \(\boxed{A}\).",A,(A),1
+36,"This question refers to the following information.
+By what principle of reason then, should these foreigners send in return a poisonous drug? Without meaning to say that the foreigners harbor such destructive intentions in their hearts, we yet positively assert that from their inordinate thirst after gain, they are perfectly careless about the injuries they inflict upon us! And such being the case, we should like to ask what has become of that conscience which heaven has implanted in the breasts of all men? We have heard that in your own country opium is prohibited with the utmost strictness and severity. This is a strong proof that you know full well how hurtful it is to mankind. Since you do not permit it to injure your own country, you ought not to have this injurious drug transferred to another country, and above all others, how much less to the Inner Land! Of the products which China exports to your foreign countries, there is not one which is not beneficial to mankind in some shape or other.
+Lin Zexu, Chinese trade commissioner, letter to Queen Victoria, 1839
+Which of the following background facts persuaded Europeans to engage in the actions described in the passage?
+(A) China had recently placed an embargo on exports of silk.
+(B) The price of Chinese tea had risen higher than European buyers found acceptable.
+(C) China refused to allow a meaningful volume of European goods to be sold there.
+(D) China's emperor had repeatedly insulted the British ambassador.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To address this question, we need to analyze the passage provided by Lin Zexu and understand the context of his letter to Queen Victoria in 1839. The key points in the passage are:
+
+- Opium is prohibited with strictness in Britain.
+- It is argued that since Britain does not allow opium within its own borders, it should not export this harmful drug to China.
+- Lin Zexu emphasizes that Chinese exports to Europe are beneficial and suggests that the issue lies specifically with the import of opium.
+
+Now let's examine each option:
+
+(A) **China had recently placed an embargo on exports of silk.**
+   - The passage does not mention any embargo on silk or other goods being exported from China. This is irrelevant to the argument about opium.
+
+(B) **The price of Chinese tea had risen higher than European buyers found acceptable.**
+   - There is no indication in the passage that the price of Chinese tea was a significant issue leading Europeans to engage in actions related to opium trade. The focus is on the harmful effects of opium, not the pricing of other goods.
+
+(C) **China refused to allow a meaningful volume of European goods to be sold there.**
+   - This option aligns with the passage's argument that",A,(C),0
+37,"What interval consists of all $u$ such that neither $2u$ nor $-20u$ is in the interval $(-\infty,-1)$ ?
+(A) [-\frac{1}{2}, 0]
+(B) [-1,1]
+(C) [-\frac{1}{2}, -\frac{1}{20}]
+(D) [0,2]
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To solve the problem, we need to determine the interval of \( u \) such that neither \( 2u \) nor \( -20u \) is in the interval \((-∞, -1)\). This means both \( 2u \geq -1 \) and \( -20u \geq -1 \).
+
+Let's break this down step-by-step:
+
+### Step 1: Analyze the condition for \( 2u \)
+We need:
+\[ 2u \geq -1 \]
+Divide both sides by 2:
+\[ u \geq -\frac{1}{2} \]
+
+### Step 2: Analyze the condition for \( -20u \)
+We need:
+\[ -20u \geq -1 \]
+Divide both sides by -20 (and remember to reverse the inequality sign):
+\[ u \leq \frac{1}{20} \]
+
+### Step 3: Combine the conditions
+The values of \( u \) must satisfy both inequalities simultaneously:
+\[ -\frac{1}{2} \leq u \leq \frac{1}{20} \]
+
+However, we need to check if there are any",,(C),0
+38,"This question refers to the following information.
+Bonesteel's prime consideration was to establish a surrender zone as far north as he thought the Soviets would accept. He knew that the Russian troops could reach the southern tip of Korea before American troops could arrive. He also knew that the Russians were on the verge of moving into Korea, or were already there. The nearest American troops to Korea were on Okinawa, 600 miles away. His problem, therefore, was to compose a surrender arrangement which, while acceptable to the Russians, would at the same time prevent them from seizing all of Korea. If they refused to confine their advance to north Korea, the United States would be unable to stop them. . . . He decided to use the 38th parallel as a hypothetical line dividing the zones within which Japanese forces in Korea would surrender to appointed American and Russian authorities.
+—Adapted from U.S. Army Lt. Paul C. McGrath's account of Colonel Bonesteel's decision in the 1940s
+How did the events depicted here affect Koreans?
+(A) They became a part of Japan’s territory.
+(B) The Americans established freedom for all Koreans.
+(C) The Korean economy never recovered.
+(D) Korea remains divided into two nations near the 38th parallel.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To determine how the events depicted here affected Koreans, let's analyze the information provided:
+
+1. **Context**: Colonel Bonesteel decided to use the 38th parallel as a line dividing the zones within which Japanese forces in Korea would surrender to appointed American and Russian authorities.
+2. **Implications**:
+   - This decision was made during a time when Soviet troops were close to entering Korea, and U.S. troops were far away (600 miles on Okinawa).
+   - The goal was to establish a surrender zone that would prevent the Soviets from advancing into all of Korea.
+   - The 38th parallel was chosen as it roughly divided Korea into northern and southern parts.
+
+Now, let's evaluate each option:
+
+(A) **They became a part of Japan’s territory.**
+   - This is incorrect because the text does not mention that Koreans became part of Japan's territory. Instead, it discusses the division between American and Soviet forces after Japan's surrender in World War II.
+
+(B) **The Americans established freedom for all Koreans.**
+   - This is also incorrect as the text does not indicate that the U.S. established freedom for all Koreans. The focus was on establishing a temporary division to prevent further conflict with the Soviets.
+
+(C)",A,(D),0
+39,"Typical advertising regulatory bodies suggest, for example that adverts must not: encourage _________, cause unnecessary ________ or _____, and must not cause _______ offence.
+(A) Unsafe practices, Wants, Fear, Trivial
+(B) Unsafe practices, Distress, Fear, Serious
+(C) Safe practices, Wants, Jealousy, Trivial
+(D) Safe practices, Distress, Jealousy, Serious
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and specific implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to concrete scenarios.","To solve this problem, we need to identify the correct words that fit into the blanks based on typical advertising regulations. Let's analyze each option step-by-step:
+
+1. **Option (A): Unsafe practices, Wants, Fear, Trivial**
+   - Encourage unsafe practices: This is a common regulatory requirement.
+   - Cause unnecessary wants: This makes sense as advertisements often aim to create desires or needs in consumers.
+   - Cause unnecessary fear: This is also a valid concern for advertising regulations.
+   - Must not cause trivial offence: While this could be part of the regulation, it seems less critical compared to the other points.
+
+2. **Option (B): Unsafe practices, Distress, Fear, Serious**
+   - Encourage unsafe practices: Again, this fits well with regulatory requirements.
+   - Cause unnecessary distress: This is a strong and relevant point for advertising regulations.
+   - Cause unnecessary fear: This also aligns with the principles of advertising regulation.
+   - Must not cause serious offence: This is a significant concern that would be included in most advertising guidelines.
+
+3. **Option (C): Safe practices, Wants, Jealousy, Trivial**
+   - Encourage safe practices: This contradicts typical regulatory requirements which aim to prevent unsafe practices.
+  ",C,(B),0

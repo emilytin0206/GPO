@@ -114,7 +114,7 @@ def prompt_optimization(
     # ====================== optimizer model config ======================
     print(f"Using Ollama for Optimizer: {optimizer_llm_name}")
     
-    optimizer_gpt_max_decode_steps = 512
+    optimizer_gpt_max_decode_steps = 2048
     optimizer_gpt_temperature = optimizer_temperature
 
     optimizer_llm_dict = dict()
@@ -537,11 +537,13 @@ def prompt_optimization(
         real_time_gradient_momentum = ""  # use for real-time update gradient momentum
         real_time_para_momentum = [] # use for real-time update para momentum, (prompt, score)
         
-        last_round_num = train_sample_num % opt_batch_size
-        if last_round_num < (opt_batch_size / 2):
+        # 直接使用向上取整 (Ceiling division) 確保包含所有數據
+        if train_sample_num % opt_batch_size == 0:
             steps = train_sample_num // opt_batch_size
         else:
-            steps = train_sample_num // opt_batch_size + 1
+            steps = (train_sample_num // opt_batch_size) + 1
+            
+        print(f"Total training samples: {train_sample_num}, Batch size: {opt_batch_size}, Total steps: {steps}")
         total_step_size = num_search_epochs * steps
 
         for i_epoch in range(num_search_epochs):

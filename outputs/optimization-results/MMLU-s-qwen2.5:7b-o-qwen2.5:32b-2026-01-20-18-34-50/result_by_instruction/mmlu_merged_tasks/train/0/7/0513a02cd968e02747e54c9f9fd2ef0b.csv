@@ -1,0 +1,174 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+56,"If f is a linear function with nonzero slope, and c < d, which of the following must be FALSE?
+(A) f (c) = f (d)
+(B) f (c) ≠ f (d)
+(C) f (c) > f (d)
+(D) f (c) < f (d)
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","Given that \( f \) is a linear function with a nonzero slope, we can express it in the form:
+\[ f(x) = mx + b \]
+where \( m \neq 0 \) (since the slope is nonzero), and \( b \) is the y-intercept.
+
+We need to determine which of the following statements must be false given that \( c < d \):
+
+(A) \( f(c) = f(d) \)
+(B) \( f(c) \neq f(d) \)
+(C) \( f(c) > f(d) \)
+(D) \( f(c) < f(d) \)
+
+Let's analyze each option:
+
+1. **Option (A): \( f(c) = f(d) \)**
+
+   For a linear function with a nonzero slope, if \( c \neq d \), then:
+   \[ f(c) = mc + b \]
+   and
+   \[ f(d) = md + b \]
+
+   Since the slope \( m \neq 0 \):
+   \[ f(c) = f(d) \implies mc + b = md + b \]
+   Simplifying, we get:
+   \[ mc = md \]
+   Dividing",A,(A),1
+57,"Two objects, A and B, have equal charge and equal mass. Neither body is in motion because the gravitational and electrostatic forces between them are equal. If the mass of Object A is halved, equilibrium will be maintained if
+(A) the charge on Object A were doubled
+(B) the charge on Object B were halved
+(C) the charge on Object B were doubled
+(D) the mass on Object B were halved
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","To solve this problem, we need to understand the forces acting on the objects and how they balance each other out.
+
+1. **Identify the Forces:**
+   - Gravitational Force (\(F_g\)): This is given by \(F_g = mg\), where \(m\) is the mass of the object and \(g\) is the acceleration due to gravity.
+   - Electrostatic Force (\(F_e\)): This is given by Coulomb's Law, which states that \(F_e = k \frac{q_1 q_2}{r^2}\), where \(k\) is Coulomb's constant, \(q_1\) and \(q_2\) are the charges of the objects, and \(r\) is the distance between them.
+
+2. **Initial Condition:**
+   - Both objects have equal charge (\(q_A = q_B = q\)) and equal mass (\(m_A = m_B = m\)).
+   - The gravitational force on each object balances the electrostatic force:
+     \[
+     F_g = F_e
+     \]
+     Substituting the expressions for \(F_g\) and \(F_e\):
+     \[
+     mg = k \frac{q^2}{r^",,(D),0
+58,"Changing which of the following will change the numerical value of the equilibrium constant?
+(A) The pressure of reactants
+(B) The pressure of products
+(C) The temperature
+(D) The total mass of the chemicals present
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","To determine which factor will change the numerical value of the equilibrium constant (K), let's analyze each option step-by-step:
+
+1. **Option A: The pressure of reactants**
+   - According to Le Chatelier's Principle, changes in pressure can affect the position of an equilibrium if the number of moles of gas is different on either side of the reaction.
+   - However, the equilibrium constant \( K \) itself does not change due to a change in pressure; it only affects the position of the equilibrium. The value of \( K \) remains constant at a given temperature.
+
+2. **Option B: The pressure of products**
+   - Similar to Option A, changing the pressure of the products will affect the position of the equilibrium but does not alter the numerical value of \( K \).
+
+3. **Option C: The temperature**
+   - The equilibrium constant \( K \) is directly dependent on temperature. According to Le Chatelier's Principle and the van't Hoff equation, an increase in temperature generally shifts the equilibrium towards the endothermic direction (where heat is absorbed), while a decrease in temperature shifts it towards the exothermic direction (where heat is released).
+   - Therefore, changing the temperature will change the numerical value of \( K \).
+
+",A,(C),0
+59,"A beam of electrons has speed 10^7 m/s. It is desired to use the magnetic field of the Earth, 5 × 10−5 T, to bend the electron beam into a circle. What will be the radius of this circle?
+(A) 1 nm
+(B) 1 μm
+(C) 1 mm
+(D) 1 m
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","To determine the radius of the circle that an electron beam will trace when subjected to a magnetic field, we can use the formula for the radius of the circular path of a charged particle in a magnetic field:
+
+\[ r = \frac{mv}{qB} \]
+
+where:
+- \( r \) is the radius of the circular path,
+- \( m \) is the mass of the electron,
+- \( v \) is the velocity of the electron,
+- \( q \) is the charge of the electron,
+- \( B \) is the magnetic field strength.
+
+Given data:
+- Speed of electrons, \( v = 10^7 \, \text{m/s} \)
+- Magnetic field strength, \( B = 5 \times 10^{-5} \, \text{T} \)
+
+The mass and charge of an electron are standard values:
+- Mass of an electron, \( m = 9.11 \times 10^{-31} \, \text{kg} \)
+- Charge of an electron, \( q = 1.602 \times 10^{-19} \, \text{C} \)
+
+Now we can substitute these values into the formula:
+
+\[ r",C,(D),0
+60,"An experiment was performed to determine the moles of carbon dioxide gas formed (collected over water) when an acid reacts with limestone. To do this, a piece of dry limestone was weighed. Then carbon dioxide was collected until the limestone disappeared. The atmospheric pressure was measured at 0.965 atm. The temperature was 295 K. The volume of CO2 was measured to the nearest mL and corrected for the vapor pressure of water. The student continuously got low results from what was expected. Can you suggest why?
+(A) Limestone is never pure CaCO3.
+(B) Limestone is Ca(HCO3)2.
+(C) Carbon dioxide is rather soluble in water.
+(D) Perhaps there was not enough acid to dissolve all the limestone.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","To address why a student might be getting low results when measuring the moles of carbon dioxide (CO2) gas formed in an experiment involving limestone reacting with acid, let's analyze each option provided:
+
+### Option A: Limestone is never pure CaCO3.
+- **Analysis**: Limestone typically contains impurities such as clay minerals, iron oxides, and other carbonate compounds. However, these impurities do not significantly affect the reaction rate or stoichiometry of the main reaction between limestone (CaCO3) and acid (HCl). Therefore, this is unlikely to be the primary reason for low results.
+
+### Option B: Limestone is Ca(HCO3)2.
+- **Analysis**: If limestone were primarily composed of calcium bicarbonate (Ca(HCO3)2), it would react with acid in a different manner. The reaction between Ca(HCO3)2 and HCl produces CO2, but the stoichiometry and rate might differ from that of pure CaCO3. However, this is not a common form of limestone, and even if present, it would still produce CO2, just possibly with a different volume or rate.
+
+### Option C: Carbon dioxide is rather soluble in water.
+- **Analysis**: This is a key factor to",A,(C),0
+61,"A corporation is ________ from its managers, employees, investors and customers. It therefore has _______ succession and also ________.
+(A) Indistinguishable, Perpetual, Does not own its own assets
+(B) Independent, Limited, Owns its own assets
+(C) Independent, Perpetual, Owns its own assets
+(D) Indistinguishable, Perpetual, Owns its own assets
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","To solve this problem, we need to understand the characteristics of a corporation as it relates to its managers, employees, investors, and customers.
+
+1. **Independent vs Indistinguishable:**
+   - A corporation is typically described as independent from its managers, employees, investors, and customers. This means that these groups (managers, employees, investors, and customers) are separate entities with their own interests and rights.
+   - ""Indistinguishable"" would imply that the corporation cannot be distinguished from these groups, which is not accurate.
+
+2. **Perpetual Nature:**
+   - Corporations have a perpetual existence, meaning they can continue to exist even if there are changes in management or ownership. This characteristic ensures that the business can operate over long periods without dissolution due to individual personnel changes.
+   - ""Perpetual"" fits well with this concept.
+
+3. **Ownership of Assets:**
+   - A corporation owns its own assets, which means it has legal rights and control over these assets. These assets include physical property, intellectual property, cash, and other resources necessary for the business operations.
+   - This is a fundamental characteristic of a corporation that distinguishes it from partnerships or sole proprietorships.
+
+Given this analysis, we can now match each part to the",A,(C),0
+62,"______ is the corporate role in governing citizenship rights for the individual
+(A) Political Corporate Social Responsibility
+(B) Triple Bottom Line
+(C) Sustainability
+(D) Corporate Citizenship
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","The correct answer is (D) Corporate Citizenship.
+
+To break down this problem methodically:
+
+1. **Understanding the Terms:**
+   - **Political Corporate Social Responsibility (A):** This term is not a standard or widely recognized concept in corporate governance or social responsibility frameworks.
+   - **Triple Bottom Line (B):** This refers to the three Ps of sustainability—People, Planet, and Profit. It's about measuring an organization’s impact on people, planet, and profit.
+   - **Sustainability (C):** This is a broad term that encompasses environmental, economic, and social aspects but does not specifically refer to corporate governance in terms of citizenship rights for individuals.
+   - **Corporate Citizenship (D):** This concept refers to the role of corporations as active members of society. It involves companies taking responsibility for their actions and contributing positively to the communities they operate within.
+
+2. **Definition and Context:**
+   - Corporate Citizenship is about how a company operates in a way that benefits not only its shareholders but also the broader community, environment, and economy.
+   - It includes aspects such as ethical business practices, social responsibility, environmental stewardship, and governance.
+
+3. **Application to Individual Rights:**
+   - Corporate Citizenship involves ensuring that individual rights are respected",D,(D),1
+63,"Pretend someone actually managed to dig a hole straight through the center of the Earth all the way to the other side. If an object were dropped down that hole, which of the following would best describe its motion? Assume ideal conditions and that the object cannot be destroyed.
+(A) It would fall to the center of the Earth and stop there.
+(B) It would fall through the hole to the other side, continue past the opposite side’s opening, and fly into space.
+(C) It would oscillate back and forth from one opening to the other indefinitely.
+(D) It would fall to the other side and stop there.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, and consider real-world deviations from ideal conditions; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, and potential counterarguments while directly addressing the question asked; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, and recognize precise terminology used within the field.","To determine the motion of an object dropped through a hole straight through the center of the Earth, we need to consider the forces acting on the object and how they change as it moves.
+
+### Step-by-Step Analysis:
+
+1. **Assumptions:**
+   - The Earth is a perfect sphere with uniform density.
+   - There are no air resistances or other external forces (like friction) acting on the object.
+   - The gravitational force at any point inside the Earth depends only on the mass of the Earth that lies within the radius to that point.
+
+2. **Gravitational Force Inside the Earth:**
+   - According to Newton's law of gravitation, the gravitational force \( F \) between two masses is given by:
+     \[
+     F = G \frac{m_1 m_2}{r^2}
+     \]
+     where \( G \) is the gravitational constant, \( m_1 \) and \( m_2 \) are the masses of the objects, and \( r \) is the distance between their centers.
+   - For an object inside a uniform spherical shell, the net gravitational force due to that shell is zero. Therefore, only the mass within the radius from the center up to the object's position",A,(C),0

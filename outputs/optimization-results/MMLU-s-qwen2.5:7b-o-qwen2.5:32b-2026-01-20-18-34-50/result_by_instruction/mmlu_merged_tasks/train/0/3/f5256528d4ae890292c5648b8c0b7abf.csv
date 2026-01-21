@@ -1,0 +1,207 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+24,"This question refers to the following information.
+Oh, shame on you, poor Winter King!
+What's this that you have done?
+Is 't not a very naughty thing
+To snatch the kaiser's crown?
+Now you will have to stay away
+Alike from Rhine and Prague,
+And more than that-shame and dismay
+Your days and nights will plague.
+Right well you knew, and all the world,
+Right well they know this thing,
+That Ferdinand alone can be
+Bohemia's lawful king.
+So come, dear Fritz, rouse up and go
+To Ferdinand, your king,
+And beg him graciously to show
+Full pardon for your sin.
+""Poor Winter King,"" seventeenth-century song
+Which of the following best explains why the narrator mentions ""Rhine and Prague""?
+(A) They are destinations for the Winter King's planned pilgrimage.
+(B) These are lands that the Winter King lost in battle.
+(C) Because these were strongholds of the Holy Roman Empire, the narrator warns the Winter King to stay away.
+(D) They are significant military posts within the borders of the Holy Roman Empire.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","To determine why the narrator mentions ""Rhine and Prague,"" let's analyze the context provided by the passage:
+
+1. **Context Analysis**: The passage is a verse from an old song that criticizes the Winter King for taking the Kaiser's crown without proper right, which has led to his banishment.
+2. **Key Phrases**:
+   - ""Now you will have to stay away / Alike from Rhine and Prague,"" suggests these places are locations where the Winter King is forbidden to go.
+
+Given this context, let’s evaluate each option:
+
+(A) **They are destinations for the Winter King's planned pilgrimage**: There is no indication in the passage that the Winter King has any plans or intentions of going on a pilgrimage. This option does not fit the context.
+   
+(B) **These are lands that the Winter King lost in battle**: The passage does not mention any battles, and it focuses more on the political implications rather than military outcomes.
+
+(C) **Because these were strongholds of the Holy Roman Empire, the narrator warns the Winter King to stay away**: This option aligns well with the context. The Rhine and Prague are significant cities within the Holy Roman Empire. By mentioning them, the narrator is likely warning the Winter King that he must avoid these",A,(B),0
+25,"A consumer report revealed the following information about three tubes of toothpaste. Bright is $60 \%$ more expensive than Fresh and has $25\%$ less volume than Glow. Glow is $25\%$ less expensive than Bright and has $33\frac{1}{3} \%$ more volume than Fresh. Fresh costs $\$1.00$ per unit of volume. What is the number of cents per unit of volume of Glow?
+(A) 90
+(B) 120
+(C) 60
+(D) 320
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","To solve this problem, we need to establish the relationships between the costs and volumes of the three tubes of toothpaste: Bright, Fresh, and Glow.
+
+1. **Define Variables:**
+   - Let \( F \) be the cost per unit volume of Fresh.
+   - Let \( V_F \) be the volume of Fresh.
+   - Let \( C_B \) be the cost per unit volume of Bright.
+   - Let \( V_B \) be the volume of Bright.
+   - Let \( C_G \) be the cost per unit volume of Glow.
+   - Let \( V_G \) be the volume of Glow.
+
+2. **Given Information:**
+   - Fresh costs $1.00 per unit of volume, so \( F = 100 \) cents per unit volume.
+   - Bright is 60% more expensive than Fresh:
+     \[
+     C_B = 1.60F = 1.60 \times 100 = 160 \text{ cents per unit volume}
+     \]
+   - Glow has 33\(\frac{1}{3}\)% (or \(\frac{1}{3}\)) more volume than Fresh:
+     \[
+    ",,(A),0
+26,"This question refers to the following information.
+Bonesteel's prime consideration was to establish a surrender zone as far north as he thought the Soviets would accept. He knew that the Russian troops could reach the southern tip of Korea before American troops could arrive. He also knew that the Russians were on the verge of moving into Korea, or were already there. The nearest American troops to Korea were on Okinawa, 600 miles away. His problem, therefore, was to compose a surrender arrangement which, while acceptable to the Russians, would at the same time prevent them from seizing all of Korea. If they refused to confine their advance to north Korea, the United States would be unable to stop them. . . . He decided to use the 38th parallel as a hypothetical line dividing the zones within which Japanese forces in Korea would surrender to appointed American and Russian authorities.
+—Adapted from U.S. Army Lt. Paul C. McGrath's account of Colonel Bonesteel's decision in the 1940s
+Which best describes the relationship between the United States and the Soviets as depicted in the passage?
+(A) Uneasy allies
+(B) Comrades-in-arms
+(C) Mortal enemies
+(D) Distant strangers
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","To determine the relationship between the United States and the Soviets as depicted in the passage, let's analyze the key points provided:
+
+1. **Context of the Situation**: The passage describes a scenario during World War II where American forces are planning for the surrender of Japanese troops in Korea.
+2. **Soviet Presence and Intentions**: It is mentioned that Soviet troops were on the verge of moving into Korea or already there, and they could potentially reach the southern tip of Korea before American troops arrived.
+3. **American Concerns**: Colonel Bonesteel was concerned about preventing the Soviets from seizing all of Korea if they refused to confine their advance to North Korea.
+4. **Proposed Solution**: He decided to use the 38th parallel as a line dividing zones within which Japanese forces would surrender to American and Russian authorities.
+
+Given these points, we can infer that:
+- The United States and the Soviet Union were in close proximity to each other's military objectives.
+- There was an understanding or agreement (albeit temporary) for both sides to occupy different parts of Korea.
+- However, there was a mutual interest in preventing one side from gaining control over the entire region.
+
+Now, let's evaluate each option:
+
+(A) **Uneasy Allies**: This term suggests",A,(A),1
+27,"SO2Cl2 → SO2(g) + Cl2(g) At 600 K, SO2Cl2 will decompose to form sulfur dioxide and chlorine gas via the above equation. If the reaction is found to be first order overall, which of the following will cause an increase in the half life of SO2Cl2?
+(A) Increasing the initial concentration of SO2Cl2
+(B) Increasing the temperature at which the reaction occurs
+(C) Decreasing the overall pressure in the container
+(D) None of these will increase the half life
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","To determine which of the given options will cause an increase in the half-life of SO2Cl2, we need to understand the relationship between the reaction order and the half-life of a reactant.
+
+Given that the reaction is first-order overall, let's analyze each option:
+
+1. **First-Order Reaction Half-Life:**
+   For a first-order reaction, the half-life (\(t_{1/2}\)) is given by:
+   \[
+   t_{1/2} = \frac{\ln 2}{k}
+   \]
+   where \(k\) is the rate constant of the reaction. The half-life of a first-order reaction depends only on the rate constant and not on the initial concentration of the reactant.
+
+2. **Option (A): Increasing the Initial Concentration of SO2Cl2**
+   - For a first-order reaction, increasing the initial concentration does not affect the half-life because the half-life is independent of the initial concentration.
+   
+3. **Option (B): Increasing the Temperature at Which the Reaction Occurs**
+   - Increasing the temperature generally increases the rate constant \(k\) for most chemical reactions due to increased molecular motion and collision frequency. Since the half-life depends on the rate constant, increasing the temperature would decrease",A,(D),0
+28,"This question refers to the following information.
+Although in Protestant Europe, [Peter the Great] was surrounded by evidence of the new civil and political rights of individual men embodied in constitutions, bills of rights and parliaments, he did not return to Russia determined to share power with his people. On the contrary, he returned not only determined to change his country but also convinced that if Russia was to be transformed, it was he who must provide both the direction and the motive force. He would try to lead; but where education and persuasion were not enough, he could drive—and if necessary flog—the backward nation forward.
+—Robert K. Massie, Peter the Great: His Life and World
+Based on the above passage, what kinds of reforms did Peter the Great embrace?
+(A) Creation of an elected assembly
+(B) Declarations of human rights
+(C) Development of a constitutional monarchy
+(D) Reduction of aristocratic influence
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","Based on the passage provided by Robert K. Massie, we can analyze Peter the Great's reforms as follows:
+
+1. **Contextual Understanding**: The passage mentions that although Peter the Great was surrounded by evidence of new civil and political rights in Protestant Europe (such as constitutions, bills of rights, and parliaments), he did not intend to implement similar changes in Russia.
+
+2. **Key Points**:
+   - He returned from his travels determined to change Russia.
+   - He believed that for Russia's transformation, he himself must provide both direction and the driving force.
+   - His approach was authoritarian; he would use education, persuasion, coercion (including physical punishment), and even force to drive the nation forward.
+
+3. **Analysis of Options**:
+   - **(A) Creation of an elected assembly**: The passage does not indicate that Peter the Great intended to establish an elected assembly in Russia.
+   - **(B) Declarations of human rights**: While the passage mentions constitutions, bills of rights, and parliaments as examples from Europe, it explicitly states that Peter did not return with a similar intent for Russia. Therefore, this option is not supported by the text.
+   - **(C) Development of a constitutional monarchy**: The passage does",C,(C),1
+29,"Which of the following can form hydrogen bonds?
+(A) CH3OCH2CH3
+(B) HCN
+(C) CH3OCH2Br
+(D) CH3NH2
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","To determine which of the given compounds can form hydrogen bonds, we need to understand what a hydrogen bond is and identify the conditions under which it can occur.
+
+A hydrogen bond typically forms between:
+1. A hydrogen atom that is covalently bonded to a highly electronegative atom (such as N, O, or F).
+2. Another highly electronegative atom (N, O, or F).
+
+Let's analyze each compound:
+
+(A) CH3OCH2CH3
+- This is dimethyl ether.
+- The oxygen in this molecule can form a hydrogen bond with another oxygen if it were to interact with water or another similar molecule. However, within the molecule itself, there are no other highly electronegative atoms that could act as acceptors for the hydrogen bond formed by the O-H bond.
+
+(B) HCN
+- This is hydrogen cyanide.
+- The N atom in HCN can form a hydrogen bond with another N or O atom if it were to interact with water or another similar molecule. However, within the molecule itself, there are no other highly electronegative atoms that could act as acceptors for the hydrogen bond formed by the N-H bond.
+
+(C) CH3OCH2Br
+- This is di",C,(D),0
+30,"______ are the obligations of workers towards their employer, based on individual contracts and wider employment laws.
+(A) Employee rights
+(B) Employee rights
+(C) Employer duties
+(D) Employee duties
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","The correct answer is (D) Employee duties.
+
+Let's break down the problem methodically:
+
+1. **Understanding the Context**: The question asks about obligations of workers towards their employer. This implies we are looking for responsibilities or actions that employees are expected to fulfill in their professional capacity.
+
+2. **Analyzing the Options**:
+   - (A) and (B) both refer to ""Employee rights,"" which is incorrect because the question specifically asks about obligations, not rights.
+   - (C) refers to ""Employer duties,"" which does not fit the context since the question is asking about what workers owe their employers, not what employers owe employees.
+   - (D) refers to ""Employee duties,"" which correctly identifies that these are the obligations or responsibilities of workers towards their employer.
+
+3. **Clarifying Concepts**:
+   - **Employee Rights**: These are legal protections and entitlements granted to employees by law or contract. Examples include the right to a safe working environment, minimum wage, and protection against discrimination.
+   - **Employer Duties**: These refer to obligations that employers have towards their employees, such as providing a safe workplace, paying wages, and adhering to labor laws.
+
+4. **Conclusion**:
+   - The question is asking about what",D,(D),1
+31,"If $(2x + 3y)^2 = 4$ and $xy = -5$, what is the value of $4x^2 + 9y^2$?
+(A) -5
+(B) 13
+(C) 64
+(D) 25
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, and perform precise calculations step-by-step; for historical or textual analysis, provide context, pinpoint significant themes, supporting details, and broader implications; and for definitions in social sciences, clarify concepts, their distinctions from related ideas, and apply them to specific scenarios.","To solve the problem, we start with the given equations:
+1. \((2x + 3y)^2 = 4\)
+2. \(xy = -5\)
+
+First, let's expand the first equation:
+\[
+(2x + 3y)^2 = 4
+\]
+Expanding the left side, we get:
+\[
+4x^2 + 12xy + 9y^2 = 4
+\]
+
+Next, substitute \(xy = -5\) into the expanded equation:
+\[
+4x^2 + 12(-5) + 9y^2 = 4
+\]
+Simplify the equation:
+\[
+4x^2 - 60 + 9y^2 = 4
+\]
+
+Now, isolate \(4x^2 + 9y^2\) by adding 60 to both sides of the equation:
+\[
+4x^2 + 9y^2 - 60 = 4 + 60
+\]
+\[
+4x^2 + 9y^2 - 60 = 64
+\]
+
+Finally, add 60 to both sides to solve for \(4x^2 +",,(C),0

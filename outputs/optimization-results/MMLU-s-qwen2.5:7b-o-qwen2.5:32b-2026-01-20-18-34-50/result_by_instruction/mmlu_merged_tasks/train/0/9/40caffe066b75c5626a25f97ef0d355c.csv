@@ -1,0 +1,209 @@
+index_in_raw_dataset,raw_prompt,raw_answer,parsed_answer,true_answer,accuracy
+72,"Express $0.1\overline{7}$ as a common fraction.
+(A) \frac{8}{45}
+(B) \frac{8}{5}
+(C) \frac{8}{7}
+(D) \frac{8}{33}
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To express \(0.1\overline{7}\) as a common fraction, we can follow these steps:
+
+1. Let \( x = 0.1\overline{7} \). This means \( x = 0.17777\ldots \).
+
+2. To eliminate the repeating part, we can multiply \( x \) by 10 to shift the decimal point one place to the right:
+   \[
+   10x = 1.7777\ldots
+   \]
+
+3. Now, let's also express \( 10x - x \):
+   \[
+   10x - x = 1.7777\ldots - 0.1777\ldots
+   \]
+   Simplifying the right side:
+   \[
+   9x = 1.6
+   \]
+
+4. To isolate \( x \), divide both sides by 9:
+   \[
+   x = \frac{1.6}{9}
+   \]
+
+5. Convert 1.6 to a fraction:
+   \[
+   1.6 = \frac{16}{10} = \frac{8",A,(A),1
+73,"This question refers to the following information.
+I walk alongside the column, ask what's going on.
+A soldier says simply: ""They call up more every day.
+""Some of us were sent north to the Yellow River at age fifteen,
+And now at forty we're heading off to the garrisons in the west.
+On our first tour, the village headman had to tie our bandannas for us.
+When we came back, our hair was white, but still there's more unrest.
+The frontier garrisons run with blood, enough to fill an ocean,
+But the Martial Emperor's territorial ambitions have yet to crest.
+In the hundred districts east of the mountains, throughout the land of Han,
+There must be ten thousand villages that brambles now infest.
+Even if wives are strong enough to handle a hoe and plow,
+The crops grow every which way, the fields are all a mess.
+It's hardest for the Shanxi men, with their reputations as fighters:
+They're rounded up like dogs or chickens, every male impressed.
+""But sir, though it's good of you to ask,
+Complaining isn't part of the soldier's task.
+We can only shake our heads. Take this winter:
+The Shanxi troops were never sent home.
+The District Officers are demanding the land tax,
+But where will it come from? You can't get blood from a stone!
+I honestly think it's bad luck to bear a son now,
+It's better to have a daughter: at least she can marry
+And live with the neighbors next door.
+But a son will end up lying on some distant prairie.""
+Du Fu, ""Ballad of the Army Carts,"" ca. 750 C.E.
+The poem provides evidence of which of the following as a major cause of later Tang decline?
+(A) Discontent among the peasantry due to oppressive taxation
+(B) Foreign invasion of the Tang heartlands
+(C) The spread of Buddhism and Taoism as a reaction to state-sponsored Confucianism
+(D) An ineffective bureaucracy and poor leadership
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To determine which of the given options is supported by the evidence in Du Fu's ""Ballad of the Army Carts,"" we need to analyze the content and context provided in the poem.
+
+1. **Discontent among the peasantry due to oppressive taxation (A)**:
+   - The poem mentions that soldiers are being called up more frequently, indicating a continuous demand for military service.
+   - It also notes that even after returning from tours of duty, soldiers find themselves back at work, suggesting a lack of relief or support upon return.
+   - The soldier's statement about the difficulty in farming and the harshness of the land tax (""District Officers are demanding the land tax, but where will it come from? You can't get blood from a stone!"") indicates that peasants are struggling to meet these demands.
+
+2. **Foreign invasion of the Tang heartlands (B)**:
+   - The poem does not mention any foreign invasions or external threats. Instead, it focuses on internal issues such as military conscription and taxation.
+
+3. **The spread of Buddhism and Taoism as a reaction to state-sponsored Confucianism (C)**:
+   - There is no reference in the poem to religious practices or beliefs influencing social or political conditions. The focus is entirely on the",C,(A),0
+74,"Let $a\star b = a^b-ab$. If $2\star x = 22$, find $x$.
+(A) 5
+(B) 22
+(C) 11
+(D) 6
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","Given the operation \( a \star b = a^b - ab \), we need to find the value of \( x \) such that \( 2 \star x = 22 \).
+
+First, substitute \( a = 2 \) and \( b = x \) into the given operation:
+\[
+2 \star x = 2^x - 2x
+\]
+We are given that this expression equals 22:
+\[
+2^x - 2x = 22
+\]
+
+Now, we need to solve for \( x \). Let's test each of the provided options:
+
+1. **Option (A): \( x = 5 \)**
+   \[
+   2^5 - 2 \cdot 5 = 32 - 10 = 22
+   \]
+   This satisfies the equation.
+
+2. **Option (B): \( x = 22 \)**
+   \[
+   2^{22} - 2 \cdot 22 = 4194304 - 44 = 4194260
+   \]
+   This does not satisfy the equation.
+
+3. **Option (C): \(",C,(A),0
+75,"This question refers to the following information.
+""From the confines of Jerusalem and the city of Constantinople a horrible tale has gone forth and very frequently has been brought to our ears, namely, that a race from the kingdom of the Persians, an accursed race, a race utterly alienated from God, a generation forsooth which has not directed its heart and has not entrusted its spirit to God, has invaded the lands of those Christians and has depopulated them by the sword, pillage and fire; it has led away a part of the captives into its own country, and a part it has destroyed by cruel tortures; it has either entirely destroyed the churches of God or appropriated them for the rites of its own religion….The kingdom of the Greeks is now dismembered by them and deprived of territory so vast in extent that it cannot be traversed in a march of two months. On whom therefore is the labor of avenging these wrongs and of recovering this territory incumbent, if not upon you? You, upon whom above other nations God has conferred remarkable glory in arms, great courage, bodily activity, and strength to humble the hairy scalp of those who resist you.
+Let the deeds of your ancestors move you and incite your minds to manly achievements; the glory and greatness of king Charles the Great, and of his son Louis, and of your other kings, who have destroyed the kingdoms of the pagans, and extended in these lands the territory of the holy church. Let the holy sepulchre of the Lord our Savior, which is possessed by unclean nations, especially incite you, and the holy places which are now treated with ignominy and irreverently polluted with their filthiness. Oh, most valiant soldiers and descendants of invincible ancestors, be not degenerate, but recall the valor of your progenitors.
+Jerusalem is the navel of the world; the land is fruitful above others, like another paradise of delights. This the Redeemer of the human race has made illustrious by His advent, has beautified by residence, has consecrated by suffering, has redeemed by death, has glorified by burial. This royal city, therefore, situated at the center of the world, is now held captive by His enemies, and is in subjection to those who do not know God, to the worship of the heathens. She seeks therefore and desires to be liberated and does not cease to implore you to come to her aid. From you especially she asks succor, because, as we have already said, God has conferred upon you above all nations great glory in arms. Accordingly undertake this journey for the remission of your sins, with the assurance of the imperishable glory of the kingdom of heaven.""
+Pope Urban II, Speech at the Council of Clermont as recorded by Robert the Monk, 1095 C.E.
+Which of the following events most directly inspired Urban's invocation of Constantinople in the first paragraph?
+(A) The conquest of Constantinople by the armies of the Abbasid Caliphate
+(B) The invasion of Anatolia by the Seljuk Turks
+(C) The invasion of the Balkans by the Avars and Bulgars
+(D) The conversion of the people of Constantinople to Catholic Christianity
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To determine which event most directly inspired Pope Urban II's invocation of Constantinople in his speech at the Council of Clermont in 1095 C.E., we need to analyze the context provided by the passage.
+
+The passage describes a ""horrible tale"" that has been brought to the ears of the people, involving an invasion and depopulation of Christian lands by a race from Persia. It mentions the kingdom of the Greeks (Constantinople) being invaded and dismembered, with vast territories lost. The speech calls upon the Christians to take action to recover this territory.
+
+Let's examine each option:
+
+(A) **The conquest of Constantinople by the armies of the Abbasid Caliphate** - This event occurred in 674-678 C.E., long before Pope Urban II's time, and does not align with the context provided in the passage.
+
+(B) **The invasion of Anatolia by the Seljuk Turks** - The Seljuk Turks began their expansion into Anatolia from the mid-11th century onwards. By 1071, they had defeated the Byzantine Empire at the Battle of Manzikert, leading to significant territorial losses for Constantinople and a weakening of its power in the region",A,(B),0
+76,"Which of the following is a balanced chemical reaction?
+(A) Na2SO4 + Ba(NO3)2 → BaSO4 + NaSO4
+(B) AgNO3 + K2CrO4 → Ag2CrO4 + 2 KNO3
+(C) 5 FeCl2 + 8 HCl + KMnO4 → 5 FeCl3 + MnCl2 + 4 H2O + KCl
+(D) Al(NO3)3 + 3 KOH → Al(OH)3 + KNO3
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To determine which of the given reactions is balanced, we need to check if the number of atoms of each element is the same on both sides of the equation. Let's analyze each reaction step-by-step.
+
+### Reaction (A): \( \text{Na}_2\text{SO}_4 + \text{Ba(NO}_3)_2 \rightarrow \text{BaSO}_4 + \text{NaNO}_3 \)
+
+1. **Reactants:**
+   - Sodium sulfate (\(\text{Na}_2\text{SO}_4\)): 2 Na, 1 S, 4 O
+   - Barium nitrate (\(\text{Ba(NO}_3)_2\)): 1 Ba, 2 N, 6 O
+
+2. **Products:**
+   - Barium sulfate (\(\text{BaSO}_4\)): 1 Ba, 1 S, 4 O
+   - Sodium nitrate (\(\text{NaNO}_3\)): 1 Na, 1 N, 3 O
+
+To balance this equation:
+- We need to ensure the number of each element is equal on both sides.
+- Barium (Ba) and sulfur (S) are already balanced with 1 atom each",A,(C),0
+77,"A moving 1.5-kg cart collides with and sticks to a 0.5-kg cart which was initially at rest. Immediately after the collision, the carts each have the same ______ as each other.
+(A) Velocity
+(B) Kinetic energy
+(C) Mass
+(D) Linear momentum
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To solve this problem, we need to consider the principles of conservation of linear momentum in an elastic collision where the two objects stick together after colliding (this is known as a perfectly inelastic collision).
+
+### Step 1: Define Variables
+- Mass of the first cart (\(m_1\)) = 1.5 kg
+- Mass of the second cart (\(m_2\)) = 0.5 kg
+- Initial velocity of the first cart (\(v_1\))
+- Initial velocity of the second cart (\(v_2\)) = 0 m/s (since it is initially at rest)
+- Final velocity of both carts after collision (\(v_f\))
+
+### Step 2: Apply Conservation of Linear Momentum
+The total linear momentum before the collision must equal the total linear momentum after the collision.
+
+\[ m_1 v_1 + m_2 v_2 = (m_1 + m_2) v_f \]
+
+Substituting the given values:
+
+\[ 1.5 \, \text{kg} \cdot v_1 + 0.5 \, \text{kg} \cdot 0 = (1.5 \, \text{kg} + 0.5",A,(A),1
+78,"This question refers to the following information.
+O ye who believe! Strong drink and games of chance and idols… are only an infamy of Satan's handiwork. Leave it aside in order that ye may succeed.
+the Qur'an, Sura 5: 89
+When once you hear the roses are in bloom,
+Then is the time, my love, to pour the wine.
+the Rubáiyát of Omar Khayyám
+Both verses relate most closely to
+(A) key economic processes within Islamic society.
+(B) production of food and drink in Islamic society.
+(C) religious regulation of personal behavior in Islamic society.
+(D) changing gender relations in Islamic society.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To address this question, we need to analyze both verses in context and determine what they most closely relate to among the given options.
+
+1. **First Verse (Qur'an, Sura 5:89):**
+   ""O ye who believe! Strong drink and games of chance and idols… are only an infamy of Satan's handiwork. Leave it aside in order that ye may succeed.""
+   
+   This verse is a commandment from the Qur'an, emphasizing the avoidance of certain activities (strong drink, games of chance, and idol worship) as they are considered harmful or associated with evil. The primary focus here is on religious regulation of personal behavior.
+
+2. **Second Verse (Rubáiyát of Omar Khayyám):**
+   ""When once you hear the roses are in bloom,
+   Then is the time, my love, to pour the wine.""
+   
+   This verse from the Rubáiyát suggests a celebration and enjoyment of life's pleasures, particularly through the metaphor of wine. It reflects a more secular or philosophical approach to personal behavior, focusing on the enjoyment of life.
+
+### Analysis:
+- **Option (A) Key Economic Processes within Islamic Society:** Neither verse directly addresses economic processes.
+- **Option (B) Production",B,(C),0
+79,"A horse is attached to a cart that is at rest behind it. Which force, or combination of forces, explains how the horse-cart system can accelerate from rest?
+(A) The forward static friction force of the ground on the horse is greater than any friction forces acting backward on the cart, providing a forward acceleration.
+(B) The forward force of the horse on the cart is greater than the backward force of the cart on the horse, providing a forward acceleration.
+(C) The force of the horse’s muscles on the rest of the horse-cart system provides the necessary acceleration.
+(D) The upward normal force of the ground on the horse is greater than the horse’s weight, providing an upward acceleration.
+Let's break down the problem methodically by applying relevant principles, formulas, or textual evidence as needed. For scientific questions, identify key reactions, laws, apply specific formulas, perform precise calculations step-by-step, consider real-world deviations from ideal conditions, and understand underlying physical phenomena; for historical or textual analysis, provide context, pinpoint significant events, themes, supporting details, broader implications, potential counterarguments while directly addressing the question asked and identifying specific beliefs or practices within texts; for definitions in social sciences, clarify concepts, their distinctions from related ideas, apply them to concrete scenarios with practical examples, discuss underlying theoretical frameworks, recognize precise terminology used within the field, ensure alignment with specific domain principles, and highlight core principles that define business objectives or responsibilities.","To determine which force or combination of forces explains how the horse-cart system can accelerate from rest, let's analyze each option step-by-step using Newton's laws of motion.
+
+### Option (A): The forward static friction force of the ground on the horse is greater than any friction forces acting backward on the cart, providing a forward acceleration.
+- **Newton’s Third Law**: For every action, there is an equal and opposite reaction. If the ground exerts a forward static friction force on the horse, the horse must exert an equal backward static friction force on the ground.
+- **Friction Between Horse and Cart**: The cart also experiences friction with the ground, but this does not directly contribute to the acceleration of the system as a whole unless it is overcome by another force.
+
+### Option (B): The forward force of the horse on the cart is greater than the backward force of the cart on the horse, providing a forward acceleration.
+- **Newton’s Third Law**: If the horse exerts a forward force on the cart, the cart must exert an equal and opposite backward force on the horse. These forces are internal to the system (horse-cart) and do not result in net external force.
+
+### Option (C): The force of the horse’s muscles on the rest of",C,(A),0
